@@ -5,8 +5,9 @@
 input = 날짜     
 output = 해당 이벤트에 참여 조건이 되는지? true false          
 
-## 2. class Menu      
-음식 가격,갯수,총 구입금액       
+## 2. class Food      
+- 해당 음식의 타입,가격,총금액 구하는 기능
+input : '크리스마스파스트-2'      
 
 ## 3. class Benefit      
 할인 정보 정리.   
@@ -19,7 +20,7 @@ class 메뉴 필요
 이벤트, 메뉴, 혜택 클래스 정보 취합     
 
 constants 폴더        
-- Food : food 관련한것들
+- FoodStorage : food 관련한것들
 
 
 ## <이벤트 목록>     
