@@ -18,6 +18,8 @@ class 메뉴 필요
 ## 4. class Secretary         
 이벤트, 메뉴, 혜택 클래스 정보 취합     
 
+constants 폴더        
+- Food : food 관련한것들
 
 
 ## <이벤트 목록>     
