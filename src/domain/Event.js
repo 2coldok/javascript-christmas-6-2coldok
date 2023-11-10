@@ -1,6 +1,5 @@
 
 // number
-
 class Event {
   #days;
 

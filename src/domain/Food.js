@@ -4,9 +4,9 @@ import {
   REGEX
  } from "../constants/FoodStorage.js";
 
-class Food {
-  #menu = MENU;
+ // input : 크리스마스스파게티-10
 
+class Food {
   #food;
 
   #myType;
@@ -20,7 +20,7 @@ class Food {
   }
 
   #searchType() {
-    const [foodType] = this.#menu.filter((foodType) => {
+    const [foodType] = MENU.filter((foodType) => {
       const map = new Map(Object.entries(foodType));
 
       return map.has(this.#food);
@@ -33,14 +33,12 @@ class Food {
     return this.#myType[NAME.type];
   }
 
-
   name() {
     return this.#food;
   }
 
   price() {
     return this.#myType[this.#food];
-
   }
 
   quantity() {
@@ -49,10 +47,10 @@ class Food {
 }
 
 export default Food
-
+/*
 const food = new Food('양송이수프-4');
 console.log(food.name());
 console.log(food.quantity());
 console.log(food.price());
 console.log(food.type());
-console.log(typeof(food.quantity()))
+*/
