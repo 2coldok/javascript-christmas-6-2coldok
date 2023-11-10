@@ -11,16 +11,18 @@ output = 해당 이벤트에 참여 조건이 되는지? true false
 input : '아이스크림-12'
 음식 이름 유효성 검사       
 
-## 3. class Benefit      
-할인 정보 정리.   
-증정 유무      
-베지 유무     
-class 날짜 필요     
-class 메뉴 필요     
+<br>
+<br>
 
-## 4. class Conuter         
-이벤트, 메뉴, 혜택 클래스 정보 취합
-수량, 가격에 따른 유효성 검증     
+## 1. class EventCounter 
+Event 클래스를 이용해 필요 정보 최종 취합
+
+## 2. class FoodCounter
+Food 클래스를 이용해 필요 정보 최종 취합
+
+## 3. class Benefit      
+EventCounter, FoodCounter 를 이용해 혜택 정리  
+
 
 constants 폴더        
 - FoodStorage : food 관련된 상수   

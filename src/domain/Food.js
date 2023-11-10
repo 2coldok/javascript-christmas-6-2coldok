@@ -44,6 +44,10 @@ class Food {
   quantity() {
     return this.#quantity;
   }
+
+  totalPrice() {
+    return this.price() * this.quantity();
+  }
 }
 
 export default Food
