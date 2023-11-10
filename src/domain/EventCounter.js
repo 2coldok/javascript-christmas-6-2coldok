@@ -1,5 +1,5 @@
 import Event from "./Event.js";
-import { DISCOUNT, BADGE } from "../constants/BenefitStorage.js";
+import { DISCOUNT, BADGE, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
 
 // undefined 처리 생각하기
 class EventCounter {
@@ -54,7 +54,10 @@ class EventCounter {
     }
   }
 
-  newYearBadge(totalBenefitAmount) {
+  getBadge(totalBenefitAmount) {  // 15라인 생각하기
+    if (totalBenefitAmount < BADGE.star) {
+      return BENEFIT_MESSEAGE.non;
+    }
     if (totalBenefitAmount >= BADGE.santa) {
       return BADGE.santaName;
     }
@@ -82,4 +85,4 @@ console.log(a.freebieDiscount(200000));*/
 const k = new EventCounter(25);
 console.log(k.checkFreebieSatisfied(100000));
 console.log(k.checkBadgeSatisfied(5000));
-console.log(k.newYearBadge(11222));*/
+console.log(k.getBadge(11222));*/

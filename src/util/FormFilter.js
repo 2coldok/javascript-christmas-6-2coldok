@@ -11,7 +11,9 @@ export const stringFilter = (string) => {
 }
 
 export const arrayFilter = (array) => {
-  const filtedArray = array.filter((element) => !element.includes(undefined));
+  const filtedArray = array.filter((element) => {
+    return !element.includes(undefined) && !element.includes(NaN);
+  });
 
   if (filtedArray.length === 0) {
     return BENEFIT_MESSEAGE.non;
