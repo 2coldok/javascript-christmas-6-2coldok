@@ -17,3 +17,12 @@ export const BADGE = Object.freeze({
   treeName : '트리',
   santaName : '산타',
 });
+
+export const BENEFIT_MESSEAGE = Object.freeze({
+  christmas : '크리스마스 디데이 할인 : -',
+  weekday : '평일 할인 : -',
+  weekend : '주말 할인 : -',
+  special : '특별 할인 : -',
+  freebie : '증정 이벤트 : -',
+  non : '없음',  
+});

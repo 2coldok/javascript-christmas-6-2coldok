@@ -13,6 +13,14 @@ class FoodCounter {
     foodsStringArray.forEach((foodString) => this.#foods.push(new Food(foodString)));
   }
 
+  foodsListWithQuantity() {
+    const foodList = this.#foods.map((foodInfo) => {
+      return foodInfo.name() + ' ' + foodInfo.quantity() + '개';
+    })
+    
+    return foodList;
+  }
+
   totalFoodsQuantity() {
     const quantity = this.#foods.reduce((acc,cur) => {
       return acc + cur.quantity();
@@ -40,3 +48,7 @@ class FoodCounter {
 }
 
 export default FoodCounter;
+
+/*
+const a = new FoodCounter('타파스-1,제로콜라-1,아이스크림-13');
+console.log(a.foodsListWithQuantity());*/
