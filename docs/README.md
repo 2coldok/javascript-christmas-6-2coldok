@@ -1,28 +1,38 @@
 # 기능 구현 목록     
 
-## 1. class Event      
+### domain
+~~~
+## class Event      
 이벤트 날짜 유효성 판단      
 input = 날짜     
 output = 해당 이벤트에 참여 조건이 되는지? true false     
-날짜 유효성 검사         
+날짜 형식 유효성 검사         
 
-## 2. class Food      
+## class EventCounter 
+Event 클래스를 이용해 필요 정보 최종 취합
+날짜 형식 유효성 검사
+
+## class Food      
 해당 음식의 타입,가격,수량 구하는 기능    
 input : '아이스크림-12'
-음식 이름 유효성 검사       
+음식 이름 유효성 검사
 
-<br>
-<br>
-
-## 1. class EventCounter 
-Event 클래스를 이용해 필요 정보 최종 취합
-
-## 2. class FoodCounter
+## class FoodCounter
 Food 클래스를 이용해 필요 정보 최종 취합
 
-## 3. class Benefit      
-EventCounter, FoodCounter 를 이용해 혜택 정리  
+## class BenefitSupervisor
+EventCounter, FoodCounter 를 이용해    
+고객들에게 노출시킬 정보들 결과 최종 계산
+~~~   
+<br>
+<br>
 
+### Controller 
+~~~
+## EventPlanner   
+프로그램의 작동을 컨트롤하는 곳
+
+~~~
 <br>
 <br>
 
@@ -34,6 +44,8 @@ constants 폴더
 - FoodStorage : food 관련된 상수   
 - BenefitStorage : 혜택과 관련된 상수
 - ViewRefiner : BenefitSupervisor 에서 나오는 최종 결과값을 출력 형식에 맞게 변환해주는 기능 
+- ErrorMesseage : 에러 메세지를 담은 곳
+- playMesseage : 이벤트 플래너 사용시 쓰이는 메세지 모음
 
 ## <예외 상황>
 

@@ -83,6 +83,6 @@ class FoodCounter {
 
 export default FoodCounter;
 
-
+/*
 const a = new FoodCounter('제로콜라-10,레드와인-1,초코케이크-a');
-console.log(a.foodsListWithQuantity());
+console.log(a.foodsListWithQuantity());*/

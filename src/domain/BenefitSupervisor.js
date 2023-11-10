@@ -79,6 +79,7 @@ class BenefitSupervisor {
 }
 
 export default BenefitSupervisor;
+
 /*
 const a = new BenefitSupervisor('3','티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1');
 
@@ -88,6 +89,6 @@ console.log(a.freebieMenu());
 console.log(OUTPUT_REFINER.benfit(a.benefitList()));
 console.log(OUTPUT_REFINER.negativePrice(a.totalBenefitAmount()));
 console.log(OUTPUT_REFINER.positivePrice(a.finalPaymentAmount()));
-console.log(a.giveBadge());
+console.log(a.giveBadge());*/
 /*
 console.log(OUTPUT_REFINER.benfit(a.benefitList()));*/

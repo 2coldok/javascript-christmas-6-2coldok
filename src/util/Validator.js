@@ -37,3 +37,4 @@ export const entireFoodsValidator = (entireFoods) => {
     throw new CustomError(ERROR_MENU.basic);
   }
 }
+
