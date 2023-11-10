@@ -23,9 +23,17 @@ Food 클래스를 이용해 필요 정보 최종 취합
 ## 3. class Benefit      
 EventCounter, FoodCounter 를 이용해 혜택 정리  
 
+<br>
+<br>
+
+util 폴더   
+- FormFilter : 예상치 못한 undefined 값들 필터해주는 기능, 가격을 천단위로 잘라주는 기능
+- Validator : 사용자 입력 유효성 검증 기능 모음
 
 constants 폴더        
 - FoodStorage : food 관련된 상수   
+- BenefitStorage : 혜택과 관련된 상수
+- ViewRefiner : BenefitSupervisor 에서 나오는 최종 결과값을 출력 형식에 맞게 변환해주는 기능 
 
 ## <예외 상황>
 
