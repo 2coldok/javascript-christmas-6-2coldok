@@ -1,4 +1,6 @@
 import { unitFoodValidator } from "../util/Validator.js";
+import CustomError from "../error/CustomError.js";
+import { ERROR_MENU } from "../constants/ErrorMesseage.js";
 import {
   MENU,
   NAME,
@@ -15,10 +17,11 @@ class Food {
   #quantity;
   
   constructor(food) {
-    unitFoodValidator(food);
+    unitFoodValidator(food); //형식 오류
     this.#food = food.replace(REGEX.notHangle, '');
     this.#quantity = Number(food.replace(REGEX.notNumber, ''));
     this.#searchType();
+    this.#businessValidator();
   }
 
   #searchType() {
@@ -26,9 +29,15 @@ class Food {
       const map = new Map(Object.entries(foodType));
 
       return map.has(this.#food);
-    })
+    });
 
-    this.#myType = foodType;
+    this.#myType = foodType; // 메뉴에 없는 음식일 경우 this.#myType 은 undefined 된다.
+  }
+
+  #businessValidator() { // 메뉴에 없는 음식 또는 수량이 0개일때 에러
+    if (!this.#myType || this.#quantity === 0) {
+      throw new CustomError(ERROR_MENU.basic);
+    }
   }
 
   type() {
@@ -59,4 +68,13 @@ console.log(food.name());
 console.log(food.quantity());
 console.log(food.price());
 console.log(food.type());
+*/
+
+/*
+const food = new Food('양송수프-10');
+console.log(food.type());
+console.log(food.name());
+console.log(food.price());
+console.log(food.quantity());
+console.log(food.totalPrice());
 */
