@@ -7,7 +7,7 @@ const OutputView = {
   },
   
   printProlog(date) {
-    Console.print(ANSWER.prolog(date));
+    Console.print(`${ANSWER.prolog(date)}\n`);
   },
 
   printOrderMenu() {
@@ -36,7 +36,15 @@ const OutputView = {
 
   printBadge() {
     Console.print(ANSWER.DecemberEventBadge);
-  },    
+  },
+  
+  printBlank() {
+    Console.print('');
+  },
+
+  printErrorMesseage(messeage) {
+    Console.print(`${messeage}`);
+  }
 };
 
 export default OutputView;

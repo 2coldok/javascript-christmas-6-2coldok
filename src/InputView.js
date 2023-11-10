@@ -3,11 +3,11 @@ import { QUESTION } from "./constants/PlannerMesseage.js";
 
 const InputView = {
   async readDate() {
-    return await Console.readLineAsync(QUESTION.date);
+    return await Console.readLineAsync(`${QUESTION.date}\n`);
   },
     
   async readMenu() {
-    return await Console.readLineAsync(QUESTION.menu);
+    return await Console.readLineAsync(`${QUESTION.menu}\n`);
   },
 };
 
