@@ -1,4 +1,4 @@
-
+import { dateNumberValidator } from "../util/Validator.js";
 // number
 class Event {
   #days;
@@ -6,6 +6,7 @@ class Event {
   #date;
 
   constructor(days) {
+    dateNumberValidator(days);
     this.#days = days;
     this.#date = new Date(2023, 11, days);
   }

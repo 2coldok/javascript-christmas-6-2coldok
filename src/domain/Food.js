@@ -1,3 +1,4 @@
+import { unitFoodValidator } from "../util/Validator.js";
 import {
   MENU,
   NAME,
@@ -14,6 +15,7 @@ class Food {
   #quantity;
   
   constructor(food) {
+    unitFoodValidator(food);
     this.#food = food.replace(REGEX.notHangle, '');
     this.#quantity = Number(food.replace(REGEX.notNumber, ''));
     this.#searchType();

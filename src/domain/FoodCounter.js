@@ -1,10 +1,11 @@
 import Food from "./Food.js";
-
+import { entireFoodsValidator } from "../util/Validator.js";
 // 
 class FoodCounter {
   #foods = [];
 
   constructor(foodsString) {
+    entireFoodsValidator(foodsString);
     this.#foodsSetting(foodsString);
   }
 
