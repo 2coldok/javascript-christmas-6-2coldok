@@ -2,16 +2,16 @@ import CustomError from "../error/CustomError.js";
 import { REGEX_ERROR, ERROR_DATE, ERROR_MENU } from "../constants/ErrorMesseage.js";
 import { REGEX } from "../constants/FoodStorage.js";
 
-export const dateValidator = (dateString) => {
-  const dateNumber = Number(dateString);
+export const dateValidator = (date) => {
   if (
-    Number.isNaN(dateNumber) ||
-    dateNumber < ERROR_DATE.minDate ||
-    dateNumber > ERROR_DATE.maxDate
+    Number.isNaN(date) ||
+    date < ERROR_DATE.minDate ||
+    date > ERROR_DATE.maxDate
   ) {
     throw new CustomError(ERROR_DATE.basic);
   }
 }
+
 
 //Food 에 이식
 export const unitFoodValidator = (unitFood) => {

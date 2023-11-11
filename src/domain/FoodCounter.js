@@ -7,43 +7,27 @@ class FoodCounter {
   #foods = [];
 
   constructor(foodsString) {
-    entireFoodsValidator(foodsString);
+    /*entireFoodsValidator(foodsString);*/
     this.#foodsSetting(foodsString);
-    this.#businessValidator();
+    this.#foodsValidator();
   }
 
   #foodsSetting(foodsString) {
-    const foodsStringArray = foodsString.split(',');
-
-    foodsStringArray.forEach((foodString) => this.#foods.push(new Food(foodString)));
+    foodsString
+      .split(',')
+      .forEach((foodString) => this.#foods.push(new Food(foodString)));
   }
 
-  #businessValidator() {
-    const drinkInfoArray = this.#foods.filter((foodInfo) => foodInfo.type() === 'drink');
+  #foodsValidator() {
+    const drinkTypeFoodList = this.#foods.filter((food) => food.type() === 'drink');
+    const foodNameList = this.#foods.map((food) => food.name());
 
-    if (this.#foods.length === drinkInfoArray.length) {
+    if (
+      this.#foods.length === drinkTypeFoodList.length ||
+      foodNameList.length !== new Set(foodNameList).size ||
+      this.totalFoodsQuantity() > 20
+    ) {
       throw new CustomError(ERROR_MENU.basic);
-    }
-
-    if (this.totalFoodsQuantity() > 20) {
-      throw new CustomError(ERROR_MENU.basic);
-    }
-
-    if (this.#foodsDuplicate()) {
-      throw new CustomError(ERROR_MENU.basic);
-    }
-  }
-
-  #foodsDuplicate() {
-    const foodsNameArray = this.#foods.map((foodInfo) => foodInfo.name());
-    const set = new Set(foodsNameArray);
-    
-    if (foodsNameArray.length !== set.size) {
-      return true;
-    }
-
-    if (foodsNameArray.length === set.size) {
-      return false
     }
   }
 

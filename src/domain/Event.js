@@ -1,11 +1,12 @@
-
+import { dateValidator } from "../util/Validator.js";
 class Event {
   #days;
 
   #date;
   
   //number
-  constructor(days) {    
+  constructor(days) {
+    dateValidator(days);    
     this.#days = days;
     this.#date = new Date(2023, 11, days);
   }

@@ -1,6 +1,6 @@
 import Event from "./Event.js";
 import { DISCOUNT, BADGE, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
-import { dateValidator } from "../util/Validator.js";
+
 
 // undefined 처리 생각하기
 class EventCounter {
@@ -9,7 +9,6 @@ class EventCounter {
   #days;
   
   constructor(daysString) {
-    dateValidator(daysString);
     this.#event = new Event(Number(daysString));
     this.#days = Number(daysString);
   }

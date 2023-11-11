@@ -21,23 +21,28 @@ class Food {
     this.#food = food.replace(REGEX.notHangle, '');
     this.#quantity = Number(food.replace(REGEX.notNumber, ''));
     this.#searchType();
-    this.#businessValidator();
+    this.#foodNonValidator();
   }
 
   #searchType() {
-    const [foodType] = MENU.filter((foodType) => {
-      const map = new Map(Object.entries(foodType));
-
-      return map.has(this.#food);
-    });
+    const [foodType] = MENU
+      .filter((foodType) => foodType.hasOwnProperty(this.#food));
+    
 
     this.#myType = foodType; // 메뉴에 없는 음식일 경우 this.#myType 은 undefined 된다.
   }
 
-  #businessValidator() { // 메뉴에 없는 음식 또는 수량이 0개일때 에러
+  #foodNonValidator() { // 메뉴에 없는 음식 또는 수량이 0개일때 에러
     if (!this.#myType || this.#quantity === 0) {
       throw new CustomError(ERROR_MENU.basic);
     }
+  }
+
+  #foodValidator(food) {
+    const foodInfo = food.split('-');
+    const foodName = foo
+
+
   }
 
   type() {
