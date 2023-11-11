@@ -12,7 +12,7 @@ export const OUTPUT_REFINER = Object.freeze({
 
   benfit : (benfitArray) => {
     if (benfitArray === BENEFIT_MESSEAGE.non) {
-      return benfitArray;
+      return [benfitArray];
     }
     const stringBenefitArray = [
       `${BENEFIT_MESSEAGE.christmas}${OUTPUT_REFINER.negativePrice(benfitArray[0])}`,

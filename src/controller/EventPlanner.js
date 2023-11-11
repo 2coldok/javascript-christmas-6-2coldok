@@ -1,7 +1,6 @@
 import BenefitSupervisor from "../domain/BenefitSupervisor.js";
 import EventCounter from "../domain/EventCounter.js";
 import FoodCounter from "../domain/FoodCounter.js";
-import { OUTPUT_REFINER } from "../constants/ViewRefiner.js";
 import InputView from "../InputView.js";
 import OutputView from "../OutputView.js";
 
@@ -45,15 +44,34 @@ class EventPlanner {
   }
 
   readClientData() {
+    this.benefitSupervisor = new BenefitSupervisor(this.date, this.menu);
+    this.plannerResult();
+  }
+  
+  plannerResult() {
     OutputView.printProlog(this.date);
 
-    this.benefitSupervisor = new BenefitSupervisor(this.date, this.menu);
-    
-    
-  }
+    OutputView.printOrderMenu();
+    OutputView.printOrderMenuResult(this.benefitSupervisor.orderMenu());
+
+    OutputView.printTotalOrderAmount();
+    OutputView.printTotalOrderAmountResult(this.benefitSupervisor.totalOrderAmountBeforeDiscount());
+
+    OutputView.printFreebieMenu();
+    OutputView.printFreebieMenuResult(this.benefitSupervisor.freebieMenu());
+
+    OutputView.printBenefitList();
+    OutputView.printBenefitListResult(this.benefitSupervisor.benefitList());
+
+    OutputView.printTotalBenefitAmount();
+    OutputView.printTotalBenefitAmountResult(this.benefitSupervisor.totalBenefitAmount());
+
+    OutputView.printFinalPaymentAmount();
+    OutputView.printFinalPaymentAmountResult(this.benefitSupervisor.finalPaymentAmount());
+
+    OutputView.printBadge();
+    OutputView.printBadgeResult(this.benefitSupervisor.giveBadge());
+  } 
 }
 
 export default EventPlanner;
-
-const a = new EventPlanner;
-a.start();

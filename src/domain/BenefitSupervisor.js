@@ -15,7 +15,7 @@ class BenefitSupervisor {
     this.#foodCounter = new FoodCounter(foodsString);
   }
 
-  OrderMenu() {
+  orderMenu() {
     return this.#foodCounter.foodsListWithQuantity(); // ['타파스 1개', '제로콜라 11개', '아이스크림 3개']
   }
   
@@ -83,7 +83,7 @@ export default BenefitSupervisor;
 /*
 const a = new BenefitSupervisor('3','티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1');
 
-console.log(a.OrderMenu());
+console.log(a.orderMenu());
 console.log(OUTPUT_REFINER.positivePrice(a.totalOrderAmountBeforeDiscount()));
 console.log(a.freebieMenu());
 console.log(OUTPUT_REFINER.benfit(a.benefitList()));

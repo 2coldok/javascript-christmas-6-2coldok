@@ -1,5 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { ANSWER } from "./constants/PlannerMesseage.js";
+import { OUTPUT_REFINER } from "./constants/ViewRefiner.js";
 
 const OutputView = {
   printIntroduce() {
@@ -10,32 +11,66 @@ const OutputView = {
     Console.print(`${ANSWER.prolog(date)}\n`);
   },
 
-  printOrderMenu() {
+  printOrderMenu() { //주문한 메뉴
     Console.print(ANSWER.orderMenu);       
   },
 
-  printTotalOrderAmount() {
+  printOrderMenuResult(foodsArray) {
+    foodsArray.forEach((food) => Console.print(food));
+    Console.print('');
+  },
+
+  printTotalOrderAmount() { // 할일전 주문총금액
     Console.print(ANSWER.totalOrderAmount);
   },
 
-  printFreebieMenu() {
+  printTotalOrderAmountResult(amount) { 
+    Console.print(OUTPUT_REFINER.positivePrice(amount));
+    Console.print('');
+  },
+
+  printFreebieMenu() { //증정 메뉴(샴페인)
     Console.print(ANSWER.freebieMenu);
   },
 
-  printBenefitList() {
+  printFreebieMenuResult(freebieMenu) {
+    Console.print(freebieMenu);
+    Console.print('');
+  },
+
+  printBenefitList() { // 해택 내역
     Console.print(ANSWER.benefitList);
   },
 
-  printTotalBenefitAmount() {
+  printBenefitListResult(benefitArray) {
+    OUTPUT_REFINER.benfit(benefitArray).forEach((benefit) => Console.print(benefit));
+    Console.print('');
+  },
+
+  printTotalBenefitAmount() { // 총 해택금액
     Console.print(ANSWER.totalBenefitAmount);
   },
 
-  printFinalPaymentAmount() {
+  printTotalBenefitAmountResult(totalBenefitAmount) {
+    Console.print(OUTPUT_REFINER.negativePrice(totalBenefitAmount));
+    Console.print('');
+  },
+
+  printFinalPaymentAmount() { //최종 결재금액
     Console.print(ANSWER.finalPaymentAmount);
   },
 
-  printBadge() {
+  printFinalPaymentAmountResult(finalPaymentAmount) {
+    Console.print(OUTPUT_REFINER.positivePrice(finalPaymentAmount));
+    Console.print('');
+  },
+
+  printBadge() { //뱃지
     Console.print(ANSWER.DecemberEventBadge);
+  },
+
+  printBadgeResult(badge) {
+    Console.print(badge);
   },
   
   printBlank() {
