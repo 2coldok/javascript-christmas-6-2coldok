@@ -1,4 +1,4 @@
-import { unitFoodValidator } from "../util/Validator.js";
+
 import CustomError from "../error/CustomError.js";
 import { ERROR_MENU } from "../constants/ErrorMesseage.js";
 import {
@@ -7,19 +7,19 @@ import {
   REGEX
  } from "../constants/FoodStorage.js";
 
+import { foodValidator } from "../util/Validator.js";
+
  // input : 크리스마스스파게티-10
 
 class Food {
   #food;
 
+  #quantity;
+
   #myType;
 
-  #quantity;
-  
   constructor(food) {
-    unitFoodValidator(food); //형식 오류
-    this.#food = food.replace(REGEX.notHangle, '');
-    this.#quantity = Number(food.replace(REGEX.notNumber, ''));
+    foodValidator(this.#foodInfoSetting(food));
     this.#searchType();
     this.#foodNonValidator();
   }
@@ -28,7 +28,6 @@ class Food {
     const [foodType] = MENU
       .filter((foodType) => foodType.hasOwnProperty(this.#food));
     
-
     this.#myType = foodType; // 메뉴에 없는 음식일 경우 this.#myType 은 undefined 된다.
   }
 
@@ -38,11 +37,12 @@ class Food {
     }
   }
 
-  #foodValidator(food) {
-    const foodInfo = food.split('-');
-    const foodName = foo
+  #foodInfoSetting(food) {
+    const foodInfoArray = food.split('-'); //상수처리
+    this.#food = foodInfoArray[0]
+    this.#quantity = Number(foodInfoArray[1])
 
-
+    return foodInfoArray;
   }
 
   type() {

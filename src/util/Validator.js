@@ -1,6 +1,6 @@
 import CustomError from "../error/CustomError.js";
 import { REGEX_ERROR, ERROR_DATE, ERROR_MENU } from "../constants/ErrorMesseage.js";
-import { REGEX } from "../constants/FoodStorage.js";
+import { MENU } from "../constants/FoodStorage.js";
 
 export const dateValidator = (date) => {
   if (
@@ -12,26 +12,32 @@ export const dateValidator = (date) => {
   }
 }
 
-
-//Food 에 이식
-export const unitFoodValidator = (unitFood) => {
-  const pieceArray = unitFood.split('-');
-  const firstPiece = pieceArray[0];
-  const endPiece = pieceArray[1];
+// foodInfoArray : [초코케이크-3]
+export const foodValidator = (foodInfoArray) => {
+  const foodName = foodInfoArray[0];
+  const foodQuantity = Number(foodInfoArray[1]);
 
   if (
-    pieceArray.length !== 2 ||
-    REGEX.notHangle.test(firstPiece) ||
-    REGEX.notNumber.test(endPiece)
+    foodInfoArray.length !== 2 ||
+    nonFoodInMenu(foodName) ||
+    Number.isNaN(foodQuantity) ||
+    nonFoodQuantity(foodQuantity)
   ) {
     throw new CustomError(ERROR_MENU.basic);
   }
 }
 
-// FoodCounter에 이식
-export const entireFoodsValidator = (entireFoods) => {
-  if (REGEX_ERROR.menu.test(entireFoods)) {
-    throw new CustomError(ERROR_MENU.basic);
+export const nonFoodInMenu = (foodName) => {
+  const foodType = MENU
+    .filter((foodType) => foodType.hasOwnProperty(foodName));
+
+  if (foodType.length === 0) {
+    return true;
   }
 }
 
+export const nonFoodQuantity = (foodQuantity) => {
+  if (foodQuantity === 0) {
+    return true;
+  }
+}

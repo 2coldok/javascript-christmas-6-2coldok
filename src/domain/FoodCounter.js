@@ -7,9 +7,8 @@ class FoodCounter {
   #foods = [];
 
   constructor(foodsString) {
-    /*entireFoodsValidator(foodsString);*/
     this.#foodsSetting(foodsString);
-    this.#foodsValidator();
+    this.#orderValidator();
   }
 
   #foodsSetting(foodsString) {
@@ -18,7 +17,7 @@ class FoodCounter {
       .forEach((foodString) => this.#foods.push(new Food(foodString)));
   }
 
-  #foodsValidator() {
+  #orderValidator() {
     const drinkTypeFoodList = this.#foods.filter((food) => food.type() === 'drink');
     const foodNameList = this.#foods.map((food) => food.name());
 
