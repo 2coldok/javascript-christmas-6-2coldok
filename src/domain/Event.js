@@ -15,6 +15,10 @@ class Event {
     return WEEK[new Date(2023, 11, this.#date).getDay()];
   }
 
+  date() {
+    return this.#date;
+  }
+
   christmasDDayDiscount() {
     if (this.#date <= 25) {
       return DISCOUNT.christmasBasic + (this.#date - 1) * DISCOUNT.christmasAccumulation;
@@ -68,7 +72,7 @@ class Event {
     }
   }
 
-  getBadge(totalBenefitAmount) {  // 15라인 생각하기
+  getBadge(totalBenefitAmount) { 
     if (totalBenefitAmount < BADGE.star) {
       return BENEFIT_MESSEAGE.non;
     }

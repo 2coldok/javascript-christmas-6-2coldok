@@ -6,10 +6,17 @@ class Supervisor {
   #event;
 
   #cashier;
-  
-  constructor(reservationDate, orderHistory) {
-    this.#event = new Event(reservationDate)
-    this.#cashier = new Cashier(orderHistory);
+
+  dateUpload(date) {
+    this.#event = new Event(date);
+  }
+
+  menuUpload(menu) {
+    this.#cashier = new Cashier(menu);
+  }
+
+  date() {
+    return this.#event.date();
   }
 
   orderMenu() {
