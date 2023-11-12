@@ -1,5 +1,5 @@
 
-import BenefitSupervisor from "../domain/BenefitSupervisor.js";
+import Supervisor from "../domain/Supervisor.js";
 import Event from "../domain/Event.js";
 import Cashier from "../domain/Cashier.js";
 import InputView from "../InputView.js";
@@ -10,7 +10,7 @@ class EventPlanner {
 
   menu;
 
-  benefitSupervisor;
+  supervisor;
 
   async start() {
     OutputView.printIntroduce();
@@ -44,7 +44,7 @@ class EventPlanner {
   }
 
   readClientData() {
-    this.benefitSupervisor = new BenefitSupervisor(this.date, this.menu);
+    this.supervisor = new Supervisor(this.date, this.menu);
     this.plannerResult();
   }
   
@@ -52,25 +52,25 @@ class EventPlanner {
     OutputView.printProlog(this.date);
 
     OutputView.printOrderMenu();
-    OutputView.printOrderMenuResult(this.benefitSupervisor.orderMenu());
+    OutputView.printOrderMenuResult(this.supervisor.orderMenu());
 
     OutputView.printTotalOrderAmount();
-    OutputView.printTotalOrderAmountResult(this.benefitSupervisor.totalOrderAmountBeforeDiscount());
+    OutputView.printTotalOrderAmountResult(this.supervisor.totalOrderAmountBeforeDiscount());
 
     OutputView.printFreebieMenu();
-    OutputView.printFreebieMenuResult(this.benefitSupervisor.freebieMenu());
+    OutputView.printFreebieMenuResult(this.supervisor.freebieMenu());
 
     OutputView.printBenefitList();
-    OutputView.printBenefitListResult(this.benefitSupervisor.benefitList());
+    OutputView.printBenefitListResult(this.supervisor.benefitList());
 
     OutputView.printTotalBenefitAmount();
-    OutputView.printTotalBenefitAmountResult(this.benefitSupervisor.totalBenefitAmount());
+    OutputView.printTotalBenefitAmountResult(this.supervisor.totalBenefitAmount());
 
     OutputView.printFinalPaymentAmount();
-    OutputView.printFinalPaymentAmountResult(this.benefitSupervisor.finalPaymentAmount());
+    OutputView.printFinalPaymentAmountResult(this.supervisor.finalPaymentAmount());
 
     OutputView.printBadge();
-    OutputView.printBadgeResult(this.benefitSupervisor.giveBadge());
+    OutputView.printBadgeResult(this.supervisor.giveBadge());
   } 
 }
 

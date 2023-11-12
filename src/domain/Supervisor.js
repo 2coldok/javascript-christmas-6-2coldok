@@ -2,7 +2,7 @@ import Event from "./Event.js";
 import Cashier from "./Cashier.js";
 import { DISCOUNT, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
 
-class BenefitSupervisor {
+class Supervisor {
   #event;
 
   #cashier;
@@ -64,4 +64,4 @@ class BenefitSupervisor {
   }
 }
 
-export default BenefitSupervisor;
+export default Supervisor;
