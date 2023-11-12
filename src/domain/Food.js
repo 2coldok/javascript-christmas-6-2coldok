@@ -19,20 +19,20 @@ class Food {
   constructor(food) {
     foodValidator(this.#enrollFood(food));
   }
-  
+   
+  #enrollFood(food) {
+    const foodInfoArray = food.split('-'); //상수처리
+    this.#name = foodInfoArray[0];
+    this.#quantity = Number(foodInfoArray[1]);
+
+    return foodInfoArray;
+  }
+
   #category() {
     const [foodTypeInfo] = MENU
       .filter((foodTypeInfo) => foodTypeInfo.hasOwnProperty(this.#name));
   
     return foodTypeInfo;
-  }
- 
-  #enrollFood(food) {
-    const foodInfoArray = food.split('-'); //상수처리
-    this.#name = foodInfoArray[0]
-    this.#quantity = Number(foodInfoArray[1])
-
-    return foodInfoArray;
   }
 
   type() {
