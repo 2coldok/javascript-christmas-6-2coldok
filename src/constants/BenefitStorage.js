@@ -6,7 +6,7 @@ export const DISCOUNT = Object.freeze({
   special : 1000,
   freebieItem : '샴페인 1개',
   freebieStandard : 120000,
-  freebieAmount : 25000,
+  freebiePrice : 25000,
   eventStandardAmount : 10000,  
 });
 

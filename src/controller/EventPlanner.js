@@ -22,8 +22,6 @@ class EventPlanner {
   async getDate() {
     try {
       this.date = await InputView.readDate();
-      /*new EventCounter(this.date)*/
-    
       new Event(this.date);
 
       await this.getMenu();

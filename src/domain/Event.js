@@ -23,13 +23,19 @@ class Event {
   }
 
   weekdayDiscount(desertQuantity) {
-    if (this.#week() !== 'FR' || this.#week() !== 'SA') {
+    if (desertQuantity === 0) {
+      return BENEFIT_MESSEAGE.non;
+    }
+    if (this.#week() !== 'FR' && this.#week() !== 'SA') {
       return desertQuantity * DISCOUNT.weekday;
     }
     return BENEFIT_MESSEAGE.non;
   }
 
   weekendDiscount(mainQuantity) {
+    if (mainQuantity === 0) {
+      return BENEFIT_MESSEAGE.non;
+    }
     if (this.#week() === 'FR' || this.#week() === 'SA') {
       return mainQuantity * DISCOUNT.weekend;
     }
@@ -45,7 +51,7 @@ class Event {
 
   freebieDiscount(totalFoodsPriceBeforeDiscount) {
     if (totalFoodsPriceBeforeDiscount >= DISCOUNT.freebieStandard) {
-      return DISCOUNT.freebieAmount;
+      return DISCOUNT.freebiePrice;
     }
     return BENEFIT_MESSEAGE.non;
   }
