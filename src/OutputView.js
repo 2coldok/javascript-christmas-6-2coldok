@@ -11,7 +11,7 @@ const OutputView = {
     Console.print(`${ANSWER.prolog(date)}\n`);
   },
 
-  printOrderMenu() { //주문한 메뉴
+  printOrderMenu() { 
     Console.print(ANSWER.orderMenu);       
   },
 
@@ -20,7 +20,7 @@ const OutputView = {
     Console.print('');
   },
 
-  printTotalOrderAmount() { // 할일전 주문총금액
+  printTotalOrderAmount() { 
     Console.print(ANSWER.totalOrderAmount);
   },
 
@@ -29,7 +29,7 @@ const OutputView = {
     Console.print('');
   },
 
-  printFreebieMenu() { //증정 메뉴(샴페인)
+  printFreebieMenu() { 
     Console.print(ANSWER.freebieMenu);
   },
 
@@ -38,16 +38,16 @@ const OutputView = {
     Console.print('');
   },
 
-  printBenefitList() { // 해택 내역
+  printBenefitList() { 
     Console.print(ANSWER.benefitList);
   },
 
   printBenefitListResult(benefitArray) {
-    OUTPUT_REFINER.benfit(benefitArray).forEach((benefit) => Console.print(benefit));
+    OUTPUT_REFINER.benfitList(benefitArray).forEach((benefit) => Console.print(benefit));
     Console.print('');
   },
 
-  printTotalBenefitAmount() { // 총 해택금액
+  printTotalBenefitAmount() { 
     Console.print(ANSWER.totalBenefitAmount);
   },
 
@@ -56,7 +56,7 @@ const OutputView = {
     Console.print('');
   },
 
-  printFinalPaymentAmount() { //최종 결재금액
+  printFinalPaymentAmount() { 
     Console.print(ANSWER.finalPaymentAmount);
   },
 
@@ -65,7 +65,7 @@ const OutputView = {
     Console.print('');
   },
 
-  printBadge() { //뱃지
+  printBadge() { 
     Console.print(ANSWER.DecemberEventBadge);
   },
 
@@ -73,10 +73,6 @@ const OutputView = {
     Console.print(badge);
   },
   
-  printBlank() {
-    Console.print('');
-  },
-
   printErrorMesseage(messeage) {
     Console.print(`${messeage}`);
   }

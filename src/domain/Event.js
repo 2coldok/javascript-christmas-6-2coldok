@@ -20,26 +20,25 @@ class Event {
   }
 
   christmasDDayDiscount() {
-    if (this.#date <= 25) {
+    if (this.#date <= DISCOUNT.christmasDate) {
       return DISCOUNT.christmasBasic + (this.#date - 1) * DISCOUNT.christmasAccumulation;
     }
     return BENEFIT_MESSEAGE.non;
   }
 
   weekdayDiscount(desertQuantity) {
-    if (desertQuantity === 0) {
-      return BENEFIT_MESSEAGE.non;
-    }
-    if (this.#week() !== 'FR' && this.#week() !== 'SA') {
-      return desertQuantity * DISCOUNT.weekday;
-    }
+    if (
+      this.#week() !== 'FR' &&
+      this.#week() !== 'SA' &&
+      desertQuantity !== 0
+    ) return desertQuantity * DISCOUNT.weekday;
+  
     return BENEFIT_MESSEAGE.non;
   }
 
   weekendDiscount(mainQuantity) {
-    if (mainQuantity === 0) {
-      return BENEFIT_MESSEAGE.non;
-    }
+    if (mainQuantity === 0) return BENEFIT_MESSEAGE.non;
+    
     if (this.#week() === 'FR' || this.#week() === 'SA') {
       return mainQuantity * DISCOUNT.weekend;
     }
@@ -47,7 +46,7 @@ class Event {
   }
 
   specialDiscount() {
-    if (this.#week() === 'SU' || this.date === 25) {
+    if (this.#week() === 'SU' || this.date === DISCOUNT.christmasDate) {
       return DISCOUNT.special;
     }
     return BENEFIT_MESSEAGE.non;
@@ -58,18 +57,6 @@ class Event {
       return DISCOUNT.freebiePrice;
     }
     return BENEFIT_MESSEAGE.non;
-  }
-
-  checkFreebieSatisfied(totalFoodsPriceBeforeDiscount) {
-    if (totalFoodsPriceBeforeDiscount >= DISCOUNT.freebieStandard) {
-      return true;
-    }
-  }
-
-  checkBadgeSatisfied(totalBenefitAmount) {
-    if (totalBenefitAmount >= BADGE.star) {
-      return true;
-    }
   }
 
   getBadge(totalBenefitAmount) { 

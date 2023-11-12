@@ -1,6 +1,7 @@
 import Event from "./Event.js";
 import Cashier from "./Cashier.js";
 import { DISCOUNT, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
+import { NAME } from "../constants/FoodStorage.js";
 
 class Supervisor {
   #event;
@@ -20,7 +21,7 @@ class Supervisor {
   }
 
   orderMenu() {
-    return this.#cashier.foodsListWithQuantity(); // ['타파스 1개', '제로콜라 11개', '아이스크림 3개']
+    return this.#cashier.foodsListWithQuantity();
   }
   
   totalOrderAmountBeforeDiscount() {
@@ -42,8 +43,8 @@ class Supervisor {
 
     return [
       this.#event.christmasDDayDiscount(),
-      this.#event.weekdayDiscount(this.#cashier.totalTypeQuantity('desert')),
-      this.#event.weekendDiscount(this.#cashier.totalTypeQuantity('main')),
+      this.#event.weekdayDiscount(this.#cashier.totalTypeQuantity(NAME.desert)),
+      this.#event.weekendDiscount(this.#cashier.totalTypeQuantity(NAME.main)),
       this.#event.specialDiscount(),
       this.#event.freebieDiscount(this.totalOrderAmountBeforeDiscount())
     ];

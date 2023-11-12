@@ -36,6 +36,12 @@ export const NAME = Object.freeze({
   drink : 'drink',
 })
 
+export const KNIFE = Object.freeze({
+  namePosition : 0,
+  quantityPosition : 1,
+  bladePosition : '-'
+})
+
 export const REGEX = Object.freeze({
   notNumber : /[^0-9]/g,
   notHangle : /[^ㄱ-ㅎ가-힣]/g,

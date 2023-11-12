@@ -13,4 +13,5 @@ export const ANSWER = Object.freeze({
   totalBenefitAmount : '<총혜택 금액>',
   finalPaymentAmount : '<할인 후 예상 결제 금액>',
   DecemberEventBadge : '<12월 이벤트 배지>',
-}); 
+});
+ 

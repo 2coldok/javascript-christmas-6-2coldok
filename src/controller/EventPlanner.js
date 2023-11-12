@@ -18,6 +18,17 @@ class EventPlanner {
     this.plannerResult(); 
   }
 
+  plannerResult() {
+    OutputView.printProlog(this.#supervisor.date());
+    this.orderMenu();
+    this.totalOrderAmount();
+    this.freebieMenu();
+    this.benefitList();
+    this.totalBenefitAmount();
+    this.finalPaymentAmount();
+    this.badge();
+  }
+
   async getDate() {
     try {
       this.#supervisor.dateUpload(await InputView.readDate());
@@ -36,17 +47,6 @@ class EventPlanner {
       OutputView.printErrorMesseage(error);
       return await this.getMenu();
     }
-  }
-
-  plannerResult() {
-    OutputView.printProlog(this.#supervisor.date());
-    this.orderMenu();
-    this.totalOrderAmount();
-    this.freebieMenu();
-    this.benefitList();
-    this.totalBenefitAmount();
-    this.finalPaymentAmount();
-    this.badge();
   }
   
   orderMenu() {

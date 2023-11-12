@@ -1,6 +1,6 @@
 import CustomError from "../error/CustomError.js";
-import { REGEX_ERROR, ERROR_DATE, ERROR_MENU } from "../constants/ErrorMesseage.js";
-import { MENU } from "../constants/FoodStorage.js";
+import { ERROR_DATE, ERROR_MENU } from "../constants/ErrorMesseage.js";
+import { MENU, KNIFE } from "../constants/FoodStorage.js";
 
 export const dateValidator = (date) => {
   if (
@@ -12,10 +12,9 @@ export const dateValidator = (date) => {
   }
 }
 
-// foodInfoArray : [초코케이크-3]
 export const foodValidator = (foodInfoArray) => {
-  const foodName = foodInfoArray[0];
-  const foodQuantity = Number(foodInfoArray[1]);
+  const foodName = foodInfoArray[KNIFE.namePosition];
+  const foodQuantity = Number(foodInfoArray[KNIFE.quantityPosition]);
 
   if (
     foodInfoArray.length !== 2 ||

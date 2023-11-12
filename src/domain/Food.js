@@ -1,7 +1,6 @@
-import { MENU, NAME } from "../constants/FoodStorage.js";
+import { MENU, NAME, KNIFE } from "../constants/FoodStorage.js";
 import { foodValidator } from "../util/Validator.js";
 
-// input : 크리스마스스파게티-10
 class Food {
   #name;
 
@@ -12,9 +11,9 @@ class Food {
   }
    
   #enrollFood(food) {
-    const foodInfoArray = food.split('-'); //상수처리
-    this.#name = foodInfoArray[0];
-    this.#quantity = Number(foodInfoArray[1]);
+    const foodInfoArray = food.split(KNIFE.bladePosition); 
+    this.#name = foodInfoArray[KNIFE.namePosition];
+    this.#quantity = Number(foodInfoArray[KNIFE.quantityPosition]);
 
     return foodInfoArray;
   }

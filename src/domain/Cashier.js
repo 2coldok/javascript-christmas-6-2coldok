@@ -22,7 +22,7 @@ class Cashier {
     if (
       this.#foods.length === drinkTypeFoodList.length ||
       foodNameList.length !== new Set(foodNameList).size ||
-      this.totalFoodsQuantity() > 20
+      this.totalFoodsQuantity() > ERROR_MENU.maxOrder
     ) {
       throw new CustomError(ERROR_MENU.basic);
     }

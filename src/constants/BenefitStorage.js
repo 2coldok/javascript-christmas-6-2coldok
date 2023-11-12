@@ -1,4 +1,5 @@
 export const DISCOUNT = Object.freeze({
+  christmasDate : 25,
   christmasBasic : 1000,
   christmasAccumulation : 100,
   weekday : 2023,
