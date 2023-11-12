@@ -1,11 +1,12 @@
 import { dateValidator } from "../util/Validator.js";
+import { DISCOUNT, BADGE, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
+
 class Event {
   #date;
 
-  //number
   constructor(date) {
-    dateValidator(date);    
-    this.#date = date;
+    dateValidator(Number(date));    
+    this.#date = Number(date);
   }
 
   #week() {
@@ -14,32 +15,66 @@ class Event {
     return WEEK[new Date(2023, 11, this.#date).getDay()];
   }
 
-  // 크리스마스 디데이 기간 (1~25일)
-  christmasPeriod() {
+  christmasDDayDiscount() {
     if (this.#date <= 25) {
-      return true;
+      return DISCOUNT.christmasBasic + (this.#date - 1) * DISCOUNT.christmasAccumulation;
     }
-    return false
-  }
-  
-  // 주말 (금, 토)
-  weekend() {
-    if (this.#week() === 'FR' || this.#week() === 'SA') {
-      return true;
-    }
-    return false
-  }
-  
-  // 일요일, 크리스마스(25)
-  specialPeriod() {
-    if (this.#week() === 'SU' || this.#date === 25) {
-      return true;
-    }
-    return false
+    return BENEFIT_MESSEAGE.non;
   }
 
-  reservationDate() {
-    return this.#date;
+  weekdayDiscount(desertQuantity) {
+    if (this.#week() !== 'FR' || this.#week() !== 'SA') {
+      return desertQuantity * DISCOUNT.weekday;
+    }
+    return BENEFIT_MESSEAGE.non;
+  }
+
+  weekendDiscount(mainQuantity) {
+    if (this.#week() === 'FR' || this.#week() === 'SA') {
+      return mainQuantity * DISCOUNT.weekend;
+    }
+    return BENEFIT_MESSEAGE.non;
+  }
+
+  specialDiscount() {
+    if (this.#week() === 'SU' || this.date === 25) {
+      return DISCOUNT.special;
+    }
+    return BENEFIT_MESSEAGE.non;
+  }
+
+  freebieDiscount(totalFoodsPriceBeforeDiscount) {
+    if (totalFoodsPriceBeforeDiscount >= DISCOUNT.freebieStandard) {
+      return DISCOUNT.freebieAmount;
+    }
+    return BENEFIT_MESSEAGE.non;
+  }
+
+  checkFreebieSatisfied(totalFoodsPriceBeforeDiscount) {
+    if (totalFoodsPriceBeforeDiscount >= DISCOUNT.freebieStandard) {
+      return true;
+    }
+  }
+
+  checkBadgeSatisfied(totalBenefitAmount) {
+    if (totalBenefitAmount >= BADGE.star) {
+      return true;
+    }
+  }
+
+  getBadge(totalBenefitAmount) {  // 15라인 생각하기
+    if (totalBenefitAmount < BADGE.star) {
+      return BENEFIT_MESSEAGE.non;
+    }
+    if (totalBenefitAmount >= BADGE.santa) {
+      return BADGE.santaName;
+    }
+    if (totalBenefitAmount >= BADGE.tree) {
+      return BADGE.treeName;
+    }
+    if (totalBenefitAmount >= BADGE.star) {
+      return BADGE.starName;
+    }
   }
 }
 

@@ -1,9 +1,9 @@
+
 import BenefitSupervisor from "../domain/BenefitSupervisor.js";
-import EventCounter from "../domain/EventCounter.js";
-import FoodCounter from "../domain/FoodCounter.js";
+import Event from "../domain/Event.js";
+import Cashier from "../domain/Cashier.js";
 import InputView from "../InputView.js";
 import OutputView from "../OutputView.js";
-
 
 class EventPlanner {
   date;
@@ -22,7 +22,9 @@ class EventPlanner {
   async getDate() {
     try {
       this.date = await InputView.readDate();
-      new EventCounter(this.date)
+      /*new EventCounter(this.date)*/
+    
+      new Event(this.date);
 
       await this.getMenu();
     } catch (error) {
@@ -34,7 +36,7 @@ class EventPlanner {
   async getMenu() {
     try {
       this.menu = await InputView.readMenu();
-      new FoodCounter(this.menu);
+      new Cashier(this.menu);
 
       this.readClientData();
     } catch (error) {

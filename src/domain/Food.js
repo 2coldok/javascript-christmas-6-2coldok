@@ -1,16 +1,7 @@
-
-import CustomError from "../error/CustomError.js";
-import { ERROR_MENU } from "../constants/ErrorMesseage.js";
-import {
-  MENU,
-  NAME,
-  REGEX
- } from "../constants/FoodStorage.js";
-
+import { MENU, NAME } from "../constants/FoodStorage.js";
 import { foodValidator } from "../util/Validator.js";
 
- // input : 크리스마스스파게티-10
-
+// input : 크리스마스스파게티-10
 class Food {
   #name;
 

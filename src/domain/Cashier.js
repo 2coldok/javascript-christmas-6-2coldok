@@ -2,7 +2,7 @@ import Food from "./Food.js";
 import CustomError from "../error/CustomError.js";
 import { ERROR_MENU } from "../constants/ErrorMesseage.js";
 
-class FoodCounter {
+class Cashier {
   #foods = [];
 
   constructor(orderHistory) {
@@ -62,8 +62,4 @@ class FoodCounter {
   }
 }
 
-export default FoodCounter;
-
-/*
-const a = new FoodCounter('제로콜라-10,레드와인-1,초코케이크-a');
-console.log(a.foodsListWithQuantity());*/
+export default Cashier;

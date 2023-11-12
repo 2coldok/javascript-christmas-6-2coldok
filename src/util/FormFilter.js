@@ -1,15 +1,5 @@
 import { BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js"
 
-export const stringFilter = (string) => {
-  if (string === undefined) {
-    return BENEFIT_MESSEAGE.non;
-  }
-
-  if (string !== undefined) {
-    return string;
-  }
-}
-
 export const arrayFilter = (array) => {
   const filtedArray = array.filter((element) => {
     return !element.includes(undefined) && !element.includes(NaN);
