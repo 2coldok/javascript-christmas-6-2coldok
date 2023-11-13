@@ -1,6 +1,7 @@
 import { Console } from "@woowacourse/mission-utils";
 import { ANSWER } from "./constants/PlannerMesseage.js";
 import { OUTPUT_REFINER } from "./constants/ViewRefiner.js";
+import { BENEFIT_MESSEAGE } from "./constants/BenefitStorage.js";
 
 const OutputView = {
   printIntroduce() {
@@ -43,7 +44,17 @@ const OutputView = {
   },
 
   printBenefitListResult(benefitArray) {
-    OUTPUT_REFINER.benfitList(benefitArray).forEach((benefit) => Console.print(benefit));
+    if (!benefitArray.get('condition')) {
+      Console.print(`${BENEFIT_MESSEAGE.non}\n`);
+      return;
+    }
+    const temp = benefitArray;
+    temp.delete('condition');
+    temp.forEach((value, key, map) => {
+      if (value !== 0) {
+        Console.print(`${BENEFIT_MESSEAGE[key]}${OUTPUT_REFINER.negativePrice(value)}`)
+      }
+    }) 
     Console.print('');
   },
 

@@ -15,11 +15,11 @@ class Supervisor {
   menuUpload(menu) {
     this.#cashier = new Cashier(menu);
   }
-
+  
   date() {
     return this.#event.date();
   }
-
+  
   orderMenu() {
     return this.#cashier.foodsListWithQuantity();
   }
@@ -27,7 +27,7 @@ class Supervisor {
   totalOrderAmountBeforeDiscount() {
     return this.#cashier.totalFoodsPrice() 
   }
-
+  
   freebieMenu() {
     if (this.totalOrderAmountBeforeDiscount() > DISCOUNT.freebieStandard) {
       return DISCOUNT.freebieItem;
@@ -35,31 +35,31 @@ class Supervisor {
    
     return BENEFIT_MESSEAGE.non;
   }
+  
+  benefitList() {
+    const benefits = new Map();
 
-  benefitList() { 
-    if (this.#cashier.totalFoodsPrice() < DISCOUNT.eventStandardAmount) {
-      return BENEFIT_MESSEAGE.non;
-    }
+    benefits.set('christmas', this.#event.christmasDDayDiscount())
+    .set('weekday', this.#event.weekdayDiscount(this.#cashier.totalTypeQuantity(NAME.desert)))
+    .set('weekend', this.#event.weekendDiscount(this.#cashier.totalTypeQuantity(NAME.main)))
+    .set('special', this.#event.specialDiscount())
+    .set('freebie', this.#event.freebieDiscount(this.totalOrderAmountBeforeDiscount()))
+    .set('condition', this.#event.condition(this.#cashier.totalFoodsPrice()));
 
-    return [
-      this.#event.christmasDDayDiscount(),
-      this.#event.weekdayDiscount(this.#cashier.totalTypeQuantity(NAME.desert)),
-      this.#event.weekendDiscount(this.#cashier.totalTypeQuantity(NAME.main)),
-      this.#event.specialDiscount(),
-      this.#event.freebieDiscount(this.totalOrderAmountBeforeDiscount())
-    ];
+    return benefits;
   }
 
-  totalBenefitAmount() { 
-    if (this.benefitList() === BENEFIT_MESSEAGE.non) {
-      return 0;
+  totalBenefitAmount() {
+    if (this.benefitList().get('condition')) {
+      return this.benefitList().get('christmas') +
+      this.benefitList().get('weekday') +
+      this.benefitList().get('weekend') +
+      this.benefitList().get('special') +
+      this.benefitList().get('freebie');
     }
-
-    return this.benefitList()
-      .filter((benefit) => benefit !== BENEFIT_MESSEAGE.non)
-      .reduce((acc, cur) => acc + cur, 0);
+    return 0;
   }
-
+  
   finalPaymentAmount() {
     if (this.#cashier.totalFoodsPrice() >= DISCOUNT.freebieStandard) {
       return this.totalOrderAmountBeforeDiscount() - this.totalBenefitAmount() + DISCOUNT.freebiePrice; 

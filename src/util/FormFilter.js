@@ -17,3 +17,7 @@ export const undefinedFilter = (array) => {
 export const priceFilter = (number) => {
   return new Intl.NumberFormat('ko-KR').format(number);
 }
+
+export const nonFilter = (array) => {
+  return array.filter((element) => element !== BENEFIT_MESSEAGE.non);
+}
