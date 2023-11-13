@@ -25,7 +25,7 @@ class Supervisor {
   }
   
   totalOrderAmountBeforeDiscount() {
-    return this.#cashier.totalFoodsPrice() 
+    return this.#cashier.totalFoodsPrice(); 
   }
   
   freebieMenu() {
@@ -40,22 +40,22 @@ class Supervisor {
     const benefits = new Map();
 
     benefits.set('christmas', this.#event.christmasDDayDiscount())
-    .set('weekday', this.#event.weekdayDiscount(this.#cashier.totalTypeQuantity(NAME.desert)))
-    .set('weekend', this.#event.weekendDiscount(this.#cashier.totalTypeQuantity(NAME.main)))
-    .set('special', this.#event.specialDiscount())
-    .set('freebie', this.#event.freebieDiscount(this.totalOrderAmountBeforeDiscount()))
-    .set('condition', this.#event.condition(this.#cashier.totalFoodsPrice()));
+      .set('weekday', this.#event.weekdayDiscount(this.#cashier.totalTypeQuantity(NAME.desert)))
+      .set('weekend', this.#event.weekendDiscount(this.#cashier.totalTypeQuantity(NAME.main)))
+      .set('special', this.#event.specialDiscount())
+      .set('freebie', this.#event.freebieDiscount(this.totalOrderAmountBeforeDiscount()))
+      .set('condition', this.#event.condition(this.#cashier.totalFoodsPrice()));
 
     return benefits;
   }
 
   totalBenefitAmount() {
     if (this.benefitList().get('condition')) {
-      return this.benefitList().get('christmas') +
-      this.benefitList().get('weekday') +
-      this.benefitList().get('weekend') +
-      this.benefitList().get('special') +
-      this.benefitList().get('freebie');
+      return this.benefitList().get('christmas')
+        + this.benefitList().get('weekday') 
+        + this.benefitList().get('weekend') 
+        + this.benefitList().get('special') 
+        + this.benefitList().get('freebie');
     }
     return 0;
   }

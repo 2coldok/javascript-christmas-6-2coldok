@@ -1,25 +1,31 @@
-import { priceFilter, undefinedFilter } from "../util/FormFilter.js"
 import { BENEFIT_MESSEAGE } from "./BenefitStorage.js";
 
-export const OUTPUT_REFINER = Object.freeze({
-  positivePrice : (priceNumber) => `${priceFilter(priceNumber)}원`,
-  negativePrice : (priceNumber) => {
+export const priceFilter = (number) => {
+  return new Intl.NumberFormat('ko-KR').format(number);
+}
+
+export const PRICE_REFINER = Object.freeze({
+  positive : (priceNumber) => `${priceFilter(priceNumber)}원`,
+  negative : (priceNumber) => {
     if (priceNumber === 0) return `${priceNumber}원`;
 
     return `-${priceFilter(priceNumber)}원`;
   },
-  benfitList : (benfitArray) => {
-    if (benfitArray === BENEFIT_MESSEAGE.non) {
-      return [benfitArray];
-    }
-    const stringBenefitArray = [
-      `${BENEFIT_MESSEAGE.christmas}${OUTPUT_REFINER.negativePrice(benfitArray[0])}`,
-      `${BENEFIT_MESSEAGE.weekday}${OUTPUT_REFINER.negativePrice(benfitArray[1])}`,
-      `${BENEFIT_MESSEAGE.weekend}${OUTPUT_REFINER.negativePrice(benfitArray[2])}`,
-      `${BENEFIT_MESSEAGE.special}${OUTPUT_REFINER.negativePrice(benfitArray[3])}`,
-      `${BENEFIT_MESSEAGE.freebie}${OUTPUT_REFINER.negativePrice(benfitArray[4])}`
-    ];
+})
 
-    return undefinedFilter(stringBenefitArray);
-  }
-});
+export const BENEFITS_REFINER = Object.freeze({
+  benfitList : (benefitList) => {
+    if (!benefitList.get('condition')) return [BENEFIT_MESSEAGE.non];
+
+    const array = [];
+    const temp = benefitList;
+    temp.delete('condition');
+    
+    temp.forEach((value, key) => {
+      if (value !== 0) {
+        array.push(`${BENEFIT_MESSEAGE[key]}${PRICE_REFINER.negative(value)}`);
+      }
+    })
+    return array;
+  },
+})

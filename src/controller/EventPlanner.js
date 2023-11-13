@@ -18,17 +18,6 @@ class EventPlanner {
     this.plannerResult(); 
   }
 
-  plannerResult() {
-    OutputView.printProlog(this.#supervisor.date());
-    this.orderMenu();
-    this.totalOrderAmount();
-    this.freebieMenu();
-    this.benefitList();
-    this.totalBenefitAmount();
-    this.finalPaymentAmount();
-    this.badge();
-  }
-
   async getDate() {
     try {
       this.#supervisor.dateUpload(await InputView.readDate());
@@ -48,39 +37,43 @@ class EventPlanner {
       return await this.getMenu();
     }
   }
+
+  plannerResult() {
+    OutputView.printProlog(this.#supervisor.date());
+    this.orderMenu();
+    this.totalOrderAmount();
+    this.freebieMenu();
+    this.benefitList();
+    this.totalBenefitAmount();
+    this.finalPaymentAmount();
+    this.badge();
+  }
   
   orderMenu() {
-    OutputView.printOrderMenu();
     OutputView.printOrderMenuResult(this.#supervisor.orderMenu());
   }
 
   totalOrderAmount() {
-    OutputView.printTotalOrderAmount();
     OutputView.printTotalOrderAmountResult(this.#supervisor.totalOrderAmountBeforeDiscount());
   }
 
   freebieMenu() {
-    OutputView.printFreebieMenu();
     OutputView.printFreebieMenuResult(this.#supervisor.freebieMenu());
   }
 
   benefitList() {
-    OutputView.printBenefitList();
     OutputView.printBenefitListResult(this.#supervisor.benefitList());
   }
 
   totalBenefitAmount() {
-    OutputView.printTotalBenefitAmount();
     OutputView.printTotalBenefitAmountResult(this.#supervisor.totalBenefitAmount());
   }
 
   finalPaymentAmount() {
-    OutputView.printFinalPaymentAmount();
     OutputView.printFinalPaymentAmountResult(this.#supervisor.finalPaymentAmount());
   }
 
   badge() {
-    OutputView.printBadge();
     OutputView.printBadgeResult(this.#supervisor.giveBadge());
   }
 }

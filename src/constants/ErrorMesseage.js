@@ -10,7 +10,8 @@ export const ERROR_MENU = Object.freeze({
   maxOrder : 20,
 });
 
+/*
 export const REGEX_ERROR = Object.freeze({
   number : /[^0-9]/g, // test시 숫자 이외에 모든것에 true 반환
   menu : /[^0-9가-힣\-,]/g, // test시 숫자, 컴마, 한글, 하이폰 이외의 모든것에 ture 반환
-})
+})*/

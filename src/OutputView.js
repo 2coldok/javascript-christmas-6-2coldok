@@ -1,7 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { ANSWER } from "./constants/PlannerMesseage.js";
-import { OUTPUT_REFINER } from "./constants/ViewRefiner.js";
-import { BENEFIT_MESSEAGE } from "./constants/BenefitStorage.js";
+import { PRICE_REFINER, BENEFITS_REFINER } from "./constants/ViewRefiner.js";
 
 const OutputView = {
   printIntroduce() {
@@ -12,75 +11,51 @@ const OutputView = {
     Console.print(`${ANSWER.prolog(date)}\n`);
   },
 
-  printOrderMenu() { 
-    Console.print(ANSWER.orderMenu);       
-  },
-
   printOrderMenuResult(foodsArray) {
+    Console.print(ANSWER.orderMenu);
+
     foodsArray.forEach((food) => Console.print(food));
     Console.print('');
   },
 
-  printTotalOrderAmount() { 
-    Console.print(ANSWER.totalOrderAmount);
-  },
-
-  printTotalOrderAmountResult(amount) { 
-    Console.print(OUTPUT_REFINER.positivePrice(amount));
+  printTotalOrderAmountResult(amount) {
+    Console.print(ANSWER.totalOrderAmount); 
+    
+    Console.print(PRICE_REFINER.positive(amount));
     Console.print('');
   },
 
-  printFreebieMenu() { 
-    Console.print(ANSWER.freebieMenu);
-  },
-
   printFreebieMenuResult(freebieMenu) {
+    Console.print(ANSWER.freebieMenu);
+
     Console.print(freebieMenu);
     Console.print('');
   },
 
-  printBenefitList() { 
-    Console.print(ANSWER.benefitList);
-  },
-
   printBenefitListResult(benefitArray) {
-    if (!benefitArray.get('condition')) {
-      Console.print(`${BENEFIT_MESSEAGE.non}\n`);
-      return;
-    }
-    const temp = benefitArray;
-    temp.delete('condition');
-    temp.forEach((value, key, map) => {
-      if (value !== 0) {
-        Console.print(`${BENEFIT_MESSEAGE[key]}${OUTPUT_REFINER.negativePrice(value)}`)
-      }
-    }) 
-    Console.print('');
-  },
+    Console.print(ANSWER.benefitList);
 
-  printTotalBenefitAmount() { 
-    Console.print(ANSWER.totalBenefitAmount);
+    BENEFITS_REFINER.benfitList(benefitArray).forEach((benefit) => Console.print(benefit));
+    Console.print('');
   },
 
   printTotalBenefitAmountResult(totalBenefitAmount) {
-    Console.print(OUTPUT_REFINER.negativePrice(totalBenefitAmount));
-    Console.print('');
-  },
+    Console.print(ANSWER.totalBenefitAmount);
 
-  printFinalPaymentAmount() { 
-    Console.print(ANSWER.finalPaymentAmount);
+    Console.print(PRICE_REFINER.negative(totalBenefitAmount));
+    Console.print('');
   },
 
   printFinalPaymentAmountResult(finalPaymentAmount) {
-    Console.print(OUTPUT_REFINER.positivePrice(finalPaymentAmount));
+    Console.print(ANSWER.finalPaymentAmount);
+
+    Console.print(PRICE_REFINER.positive(finalPaymentAmount));
     Console.print('');
   },
 
-  printBadge() { 
-    Console.print(ANSWER.DecemberEventBadge);
-  },
-
   printBadgeResult(badge) {
+    Console.print(ANSWER.DecemberEventBadge);
+
     Console.print(badge);
   },
   

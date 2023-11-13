@@ -42,7 +42,8 @@ export const KNIFE = Object.freeze({
   bladePosition : '-'
 })
 
+/*
 export const REGEX = Object.freeze({
   notNumber : /[^0-9]/g,
   notHangle : /[^ㄱ-ㅎ가-힣]/g,
-});
+});*/
