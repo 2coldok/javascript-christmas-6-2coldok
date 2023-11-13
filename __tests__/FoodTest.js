@@ -93,9 +93,4 @@ describe('Food 클래스 유효성 검증 단위 테스트', () => {
     
     expect(() => new Food(input)).toThrow('[ERROR]');
   });
-
-  
-  
-    
-
 });

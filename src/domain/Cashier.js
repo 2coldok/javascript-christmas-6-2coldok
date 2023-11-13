@@ -30,36 +30,21 @@ class Cashier {
   }
 
   foodsListWithQuantity() {
-    const foodList = this.#foods.map((foodInfo) => {
-      return merageFoodInfo(foodInfo.name(), foodInfo.quantity());
-    });
-    
-    return foodList;
+    return this.#foods.map((foodInfo) => merageFoodInfo(foodInfo.name(), foodInfo.quantity()));
   }
 
   totalFoodsQuantity() {
-    const quantity = this.#foods.reduce((acc,cur) => {
-      return acc + cur.quantity();
-    }, 0);
-
-    return quantity;
+    return this.#foods.reduce((acc,cur) => acc + cur.quantity(), 0);
   }
 
   totalFoodsPrice() {
-    const price = this.#foods.reduce((acc, cur) => {
-      return acc + cur.totalPrice();
-    }, 0);
-
-    return price;
+    return this.#foods.reduce((acc, cur) => acc + cur.totalPrice(), 0); 
   }
 
   totalTypeQuantity(foodType) {
-    const typeQuantityList = this.#foods
-      .filter((food) => food.type() === foodType);
-    
-    return typeQuantityList.reduce((acc, cur) => {
-      return acc + cur.quantity();
-    }, 0); 
+    return this.#foods
+      .filter((food) => food.type() === foodType)
+      .reduce((acc, cur) => acc + cur.quantity(), 0);
   }
 }
 
