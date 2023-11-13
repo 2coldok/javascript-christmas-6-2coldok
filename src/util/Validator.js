@@ -4,6 +4,7 @@ import { MENU, KNIFE } from "../constants/FoodStorage.js";
 
 export const dateValidator = (date) => {
   if (
+    typeof date !== 'number' ||
     Number.isNaN(date) ||
     date < ERROR_DATE.minDate ||
     date > ERROR_DATE.maxDate
