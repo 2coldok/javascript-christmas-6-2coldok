@@ -1,6 +1,7 @@
 import Food from "./Food.js";
 import CustomError from "../error/CustomError.js";
 import { ERROR_MENU } from "../constants/ErrorMesseage.js";
+import { merageFoodInfo } from "../constants/ViewRefiner.js";
 
 class Cashier {
   #foods = [];
@@ -30,8 +31,8 @@ class Cashier {
 
   foodsListWithQuantity() {
     const foodList = this.#foods.map((foodInfo) => {
-      return foodInfo.name() + ' ' + foodInfo.quantity() + '개';
-    })
+      return merageFoodInfo(foodInfo.name(), foodInfo.quantity());
+    });
     
     return foodList;
   }

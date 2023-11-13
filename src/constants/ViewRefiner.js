@@ -4,6 +4,10 @@ export const priceFilter = (number) => {
   return new Intl.NumberFormat('ko-KR').format(number);
 }
 
+export const merageFoodInfo = (foodName, foodAmount) => {
+  return `${foodName} ${foodAmount}개`
+}
+
 export const PRICE_REFINER = Object.freeze({
   positive : (priceNumber) => `${priceFilter(priceNumber)}원`,
   negative : (priceNumber) => {
