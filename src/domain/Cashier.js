@@ -2,6 +2,7 @@ import Food from "./Food.js";
 import CustomError from "../error/CustomError.js";
 import { ERROR_MENU } from "../constants/ErrorMesseage.js";
 import { merageFoodInfo } from "../constants/ViewRefiner.js";
+import { DISCOUNT, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
 
 class Cashier {
   #foods = [];
@@ -45,6 +46,13 @@ class Cashier {
     return this.#foods
       .filter((food) => food.type() === foodType)
       .reduce((acc, cur) => acc + cur.quantity(), 0);
+  }
+
+  freebieMenu() {
+    if (this.totalFoodsPrice() > DISCOUNT.freebieStandard) {
+      return DISCOUNT.freebieItem;
+    }
+    return BENEFIT_MESSEAGE.non;
   }
 }
 

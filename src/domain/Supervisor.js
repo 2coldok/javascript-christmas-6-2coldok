@@ -1,6 +1,6 @@
 import Event from "./Event.js";
 import Cashier from "./Cashier.js";
-import { DISCOUNT, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
+import { DISCOUNT } from "../constants/BenefitStorage.js";
 import { NAME } from "../constants/FoodStorage.js";
 
 class Supervisor {
@@ -15,38 +15,25 @@ class Supervisor {
   menuUpload(menu) {
     this.#cashier = new Cashier(menu);
   }
-  
-  date() {
-    return this.#event.date();
+
+  event() {
+    return this.#event;
   }
-  
-  orderMenu() {
-    return this.#cashier.foodsListWithQuantity();
-  }
-  
-  totalOrderAmountBeforeDiscount() {
-    return this.#cashier.totalFoodsPrice(); 
-  }
-  
-  freebieMenu() {
-    if (this.totalOrderAmountBeforeDiscount() > DISCOUNT.freebieStandard) {
-      return DISCOUNT.freebieItem;
-    }
-   
-    return BENEFIT_MESSEAGE.non;
+
+  cashier() {
+    return this.#cashier;
   }
   
   benefitList() {
     const benefits = new Map();
 
-    benefits.set('christmas', this.#event.christmasDDayDiscount())
+    return benefits
+      .set('christmas', this.#event.christmasDDayDiscount())
       .set('weekday', this.#event.weekdayDiscount(this.#cashier.totalTypeQuantity(NAME.desert)))
       .set('weekend', this.#event.weekendDiscount(this.#cashier.totalTypeQuantity(NAME.main)))
       .set('special', this.#event.specialDiscount())
-      .set('freebie', this.#event.freebieDiscount(this.totalOrderAmountBeforeDiscount()))
+      .set('freebie', this.#event.freebieDiscount(this.#cashier.totalFoodsPrice()))
       .set('condition', this.#event.condition(this.#cashier.totalFoodsPrice()));
-
-    return benefits;
   }
 
   totalBenefitAmount() {
@@ -62,9 +49,9 @@ class Supervisor {
   
   finalPaymentAmount() {
     if (this.#cashier.totalFoodsPrice() >= DISCOUNT.freebieStandard) {
-      return this.totalOrderAmountBeforeDiscount() - this.totalBenefitAmount() + DISCOUNT.freebiePrice; 
+      return this.#cashier.totalFoodsPrice() - this.totalBenefitAmount() + DISCOUNT.freebiePrice; 
     }
-    return this.totalOrderAmountBeforeDiscount() - this.totalBenefitAmount();
+    return this.#cashier.totalFoodsPrice() - this.totalBenefitAmount();
   }
 
   giveBadge() { 

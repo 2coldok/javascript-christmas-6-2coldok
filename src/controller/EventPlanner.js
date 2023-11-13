@@ -39,7 +39,7 @@ class EventPlanner {
   }
 
   plannerResult() {
-    OutputView.printProlog(this.#supervisor.date());
+    OutputView.printProlog(this.#supervisor.event().date());
     this.orderMenu();
     this.totalOrderAmount();
     this.freebieMenu();
@@ -50,15 +50,15 @@ class EventPlanner {
   }
   
   orderMenu() {
-    OutputView.printOrderMenuResult(this.#supervisor.orderMenu());
+    OutputView.printOrderMenuResult(this.#supervisor.cashier().foodsListWithQuantity());
   }
 
   totalOrderAmount() {
-    OutputView.printTotalOrderAmountResult(this.#supervisor.totalOrderAmountBeforeDiscount());
+    OutputView.printTotalOrderAmountResult(this.#supervisor.cashier().totalFoodsPrice());
   }
 
   freebieMenu() {
-    OutputView.printFreebieMenuResult(this.#supervisor.freebieMenu());
+    OutputView.printFreebieMenuResult(this.#supervisor.cashier().freebieMenu());
   }
 
   benefitList() {
