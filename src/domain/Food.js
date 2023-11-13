@@ -32,17 +32,13 @@ class Food {
   name() {
     return this.#name;
   }
-
-  price() {
-    return this.#category()[this.#name]
-  }
-
+  
   quantity() {
     return this.#quantity;
   }
 
   totalPrice() {
-    return this.price() * this.quantity();
+    return this.#category()[this.#name] * this.quantity();
   }
 }
 
