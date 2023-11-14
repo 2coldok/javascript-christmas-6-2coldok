@@ -9,7 +9,9 @@ class Cashier {
 
   constructor(orderHistory) {
     this.#enrollFoods(orderHistory);
-    this.#orderValidator();
+    this.#orderDuplicationValidator();
+    this.#onlyDrinkValidator();
+    this.#orderMaxValidator();
   }
 
   #enrollFoods(orderHistory) {
@@ -18,15 +20,24 @@ class Cashier {
       .forEach((food) => this.#foods.push(new Food(food)));
   }
 
-  #orderValidator() {
-    const drinkTypeFoodList = this.#foods.filter((food) => food.type() === NAME.drink);
+  #orderDuplicationValidator() {
     const foodNameList = this.#foods.map((food) => food.name());
-    if (
-      this.#foods.length === drinkTypeFoodList.length ||
-      foodNameList.length !== new Set(foodNameList).size ||
-      this.#totalFoodsQuantity() > ERROR_MENU.maxOrder
-    ) {
+    if (foodNameList.length !== new Set(foodNameList).size) {
       throw new Error(ERROR_MENU.basic);
+    }
+  }
+
+  #onlyDrinkValidator() {
+    const drinkTypeFoodsList = this.#foods.filter((food) => food.type() === NAME.drink);
+
+    if (drinkTypeFoodsList.length === this.#foods.length) {
+      throw new Error(ERROR_MENU.onlyDrink);
+    }
+  }
+
+  #orderMaxValidator() {
+    if (this.#totalFoodsQuantity() > ERROR_MENU.maxOrderNumber) {
+      throw new Error(`${ERROR_MENU.maxOrder}\n${ERROR_MENU.orderAmountExample}`);
     }
   }
 

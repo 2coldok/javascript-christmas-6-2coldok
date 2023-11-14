@@ -4,6 +4,7 @@ import { MENU, KNIFE } from "../constants/FoodStorage.js";
 export const dateValidator = (date) => {
   if (
     Number.isNaN(date) ||
+    !Number.isInteger(date) ||
     date < ERROR_DATE.minDate ||
     date > ERROR_DATE.maxDate
   ) {
@@ -22,7 +23,7 @@ export const nonFoodInMenu = (foodName) => {
 };
 
 export const nonFoodQuantity = (foodQuantity) => {
-  if (foodQuantity === 0) {
+  if (foodQuantity < ERROR_MENU.minOrderNumber) {
     return true;
   }
   return false;
@@ -36,6 +37,7 @@ export const foodValidator = (foodInfoArray) => {
     foodInfoArray.length !== 2 ||
     nonFoodInMenu(foodName) ||
     Number.isNaN(foodQuantity) ||
+    !Number.isInteger(foodQuantity) ||
     nonFoodQuantity(foodQuantity)
   ) {
     throw new Error(ERROR_MENU.basic);

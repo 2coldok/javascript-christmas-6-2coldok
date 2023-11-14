@@ -46,12 +46,16 @@ class Supervisor {
     }
     return DISCOUNT.zero;
   }
-  
+
+  #totalDiscountAmount() {
+    return this.benefitList().get(EVENT_NAME.christmas)
+      + this.benefitList().get(EVENT_NAME.weekday)
+      + this.benefitList().get(EVENT_NAME.weekend)
+      + this.benefitList().get(EVENT_NAME.special);
+  }
+
   finalPaymentAmount() {
-    if (this.#cashier.totalFoodsPrice() >= DISCOUNT.freebieStandard) {
-      return this.#cashier.totalFoodsPrice() - this.totalBenefitAmount() + DISCOUNT.freebiePrice; 
-    }
-    return this.#cashier.totalFoodsPrice() - this.totalBenefitAmount();
+    return this.#cashier.totalFoodsPrice() - this.#totalDiscountAmount();
   }
 
   giveBadge() { 
