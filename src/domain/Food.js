@@ -1,5 +1,9 @@
-import { MENU, NAME, KNIFE } from "../constants/FoodStorage.js";
 import { foodValidator } from "../util/Validator.js";
+import { 
+  MENU,
+  NAME,
+  KNIFE
+} from "../constants/FoodStorage.js";
 
 class Food {
   #name;

@@ -1,28 +1,44 @@
 import Food from "../src/domain/Food.js";
 
 describe('Food 클래스 메서드 단위테스트', () => {
-  test.each([['양송이수프-1'], ['타파스-2'], ['시저샐러드-3']])('[타입메서드] 해당 메뉴가 에피타이저 타입인걸 잘 찾는지', (input) => {
+  test.each([
+    ['양송이수프-1'],
+    ['타파스-2'],
+    ['시저샐러드-3']
+  ])('[타입메서드] 해당 메뉴가 에피타이저 타입인걸 잘 찾는지', (input) => {
     const FOOD_TYPE = 'appetizer';
     const food = new Food(input);
 
     expect(food.type()).toEqual(FOOD_TYPE);
   });
 
-  test.each([['티본스테이크-10'], ['바비큐립-11'], ['해산물파스타-12'], ['크리스마스파스타-13']])('[타입메서드] 해당 메뉴가 메인 타입인걸 잘 찾는지', (input) => {
+  test.each([
+    ['티본스테이크-10'],
+    ['바비큐립-11'],
+    ['해산물파스타-12'],
+    ['크리스마스파스타-13']
+  ])('[타입메서드] 해당 메뉴가 메인 타입인걸 잘 찾는지', (input) => {
     const FOOD_TYPE = 'main';
     const food = new Food(input);
 
     expect(food.type()).toEqual(FOOD_TYPE);
   });
 
-  test.each([['초코케이크-19'], ['아이스크림-17']])('[타입메서드] 해당 메뉴가 디저트 타입인걸 잘 찾는지', (input) => {
+  test.each([
+    ['초코케이크-19'],
+    ['아이스크림-17']
+  ])('[타입메서드] 해당 메뉴가 디저트 타입인걸 잘 찾는지', (input) => {
     const FOOD_TYPE = 'desert';
     const food = new Food(input);
 
     expect(food.type()).toEqual(FOOD_TYPE);
   });
 
-  test.each([['제로콜라-1'], ['레드와인-2'], ['샴페인-3']])('[타입메서드] 해당 메뉴가 음료 타입인걸 잘 찾는지', (input) => {
+  test.each([
+    ['제로콜라-1'],
+    ['레드와인-2'],
+    ['샴페인-3']
+  ])('[타입메서드] 해당 메뉴가 음료 타입인걸 잘 찾는지', (input) => {
     const FOOD_TYPE = 'drink';
     const food = new Food(input);
 

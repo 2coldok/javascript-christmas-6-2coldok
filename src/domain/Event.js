@@ -1,5 +1,9 @@
 import { dateValidator } from "../util/Validator.js";
-import { DISCOUNT, BADGE, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
+import {
+  DISCOUNT,
+  BADGE, 
+  BENEFIT_MESSEAGE
+} from "../constants/BenefitStorage.js";
 
 class Event {
   #date;

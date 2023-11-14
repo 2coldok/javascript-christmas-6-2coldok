@@ -61,7 +61,11 @@ describe('Supervisor 클래스 단위테스트', () => {
 
   test('해택내역을 잘 계산해 주는지 테스트 3', () => {
     const DATE = '3';
-    const MENU = '양송이수프-1,타파스-1,시저샐러드-1,티본스테이크-1,바비큐립-1,해산물파스타-1,크리스마스파스타-1,초코케이크-1,아이스크림-1,제로콜라-1,레드와인-1,샴페인-1';
+    const MENU = 
+    '양송이수프-1,타파스-1,시저샐러드-1,' +
+    '티본스테이크-1,바비큐립-1,해산물파스타-1,크리스마스파스타-1,' +
+    '초코케이크-1,아이스크림-1,제로콜라-1,레드와인-1,샴페인-1';
+
     const supervisor = new Supervisor();
     supervisor.dateUpload(DATE);
     supervisor.menuUpload(MENU);
@@ -81,7 +85,11 @@ describe('Supervisor 클래스 단위테스트', () => {
 
   test('총 혜택 금액을 잘 계산하는지 테스트', () => {
     const DATE = '31';
-    const MENU = '양송이수프-1,타파스-1,시저샐러드-1,티본스테이크-1,바비큐립-1,해산물파스타-1,크리스마스파스타-1,초코케이크-1,아이스크림-1,제로콜라-1,레드와인-1,샴페인-1';
+    const MENU = 
+    '양송이수프-1,타파스-1,시저샐러드-1,' + 
+    '티본스테이크-1,바비큐립-1,해산물파스타-1,크리스마스파스타-1,' + 
+    '초코케이크-1,아이스크림-1,제로콜라-1,레드와인-1,샴페인-1';
+
     const supervisor = new Supervisor();
     supervisor.dateUpload(DATE);
     supervisor.menuUpload(MENU);
@@ -91,7 +99,13 @@ describe('Supervisor 클래스 단위테스트', () => {
     const WEEKEND_DISCOUNT = 0;
     const SPECIAL_DISCOUNT = 1000;
     const FREEBIE_DISCOUNT = 25000;
-    const TOTAL_DISCOUNT_AMOUNT = CHRISTMAS_DISCOUNT + WEEKDAY_DISCOUNT + WEEKEND_DISCOUNT + SPECIAL_DISCOUNT + FREEBIE_DISCOUNT;
+
+    const TOTAL_DISCOUNT_AMOUNT = 
+    CHRISTMAS_DISCOUNT + 
+    WEEKDAY_DISCOUNT + 
+    WEEKEND_DISCOUNT + 
+    SPECIAL_DISCOUNT + 
+    FREEBIE_DISCOUNT;
 
     expect(supervisor.totalBenefitAmount()).toEqual(TOTAL_DISCOUNT_AMOUNT);
   });
