@@ -36,19 +36,19 @@ describe('Cashier 클래스 유효성 테스트', () => {
 
 describe('Cashier 클래스 메서드 단위테스트', () => {
   test('음식 이름과 수량을 잘 짝지어서 보여주는지 테스트', () => {
-    const orderMenu = '티본스테이크-2,샴페인-3,초코케이크-4,시저샐러드-5,바비큐립-3,타파스-3';
-    const result = ['티본스테이크 2개', '샴페인 3개', '초코케이크 4개', '시저샐러드 5개', '바비큐립 3개', '타파스 3개'];
-    const cashier = new Cashier(orderMenu);
+    const ORDER_MENU = '티본스테이크-2,샴페인-3,초코케이크-4,시저샐러드-5,바비큐립-3,타파스-3';
+    const RESULT = ['티본스테이크 2개', '샴페인 3개', '초코케이크 4개', '시저샐러드 5개', '바비큐립 3개', '타파스 3개'];
+    const cashier = new Cashier(ORDER_MENU);
 
-    expect(cashier.foodsListWithQuantity()).toEqual(result);
+    expect(cashier.foodsListWithQuantity()).toEqual(RESULT);
   });
 
   test('주문한 음식들의 총 가격을 잘 계산하는지 테스트', () => {
-    const orderMenu = '아이스크림-4,티본스테이크-3,샴페인-2,시저샐러드-1';
-    const result = (5000 * 4) + (55000 * 3) + (25000 * 2) + (8000 * 1);
-    const cashier = new Cashier(orderMenu);
+    const ORDER_MENU = '아이스크림-4,티본스테이크-3,샴페인-2,시저샐러드-1';
+    const RESULT = (5000 * 4) + (55000 * 3) + (25000 * 2) + (8000 * 1);
+    const cashier = new Cashier(ORDER_MENU);
 
-    expect(cashier.totalFoodsPrice()).toEqual(result);
+    expect(cashier.totalFoodsPrice()).toEqual(RESULT);
   });
   
   let typeIndex = 0
@@ -58,27 +58,27 @@ describe('Cashier 클래스 메서드 단위테스트', () => {
     ['desert'],
     ['drink']
   ])('해당 주문에 지정한 타입음식의 총수량을 잘 계산하는지 테스트', (input) => {
-    const orderMenu = '양송이수프-3,타파스-3,티본스테이크-1,해산물파스타-2,바비큐립-2,초코케이크-3,아이스크림-1,제로콜라-2,샴페인-1';
-    const result = [6,5,4,3];
-    const cashier = new Cashier(orderMenu);
+    const ORDER_MENU = '양송이수프-3,타파스-3,티본스테이크-1,해산물파스타-2,바비큐립-2,초코케이크-3,아이스크림-1,제로콜라-2,샴페인-1';
+    const RESULT = [6,5,4,3];
+    const cashier = new Cashier(ORDER_MENU);
 
-    expect(cashier.totalTypeQuantity(input)).toEqual(result[typeIndex]);
+    expect(cashier.totalTypeQuantity(input)).toEqual(RESULT[typeIndex]);
     typeIndex += 1;
   });
 
   test('주문 금액이 12만원 이상이면 샴페인 증정 해주는지 테스트', () => {
-    const orderMenu = '티본스테이크-2,양송이수프-1,타파스-1';
-    const result = '샴페인 1개';
-    const cashier = new Cashier(orderMenu);
+    const ORDER_MENU = '티본스테이크-2,양송이수프-1,타파스-1';
+    const RESULT = '샴페인 1개';
+    const cashier = new Cashier(ORDER_MENU);
 
-    expect(cashier.freebieMenu()).toEqual(result);
+    expect(cashier.freebieMenu()).toEqual(RESULT);
   });
 
   test('주문 금액이 12만원 미만이면 없음을 표시하는지 테스트', () => {
-    const orderMenu = '티본스테이크-2,양송이수프-1';
-    const result = '없음';
-    const cashier = new Cashier(orderMenu);
+    const ORDER_MENU = '티본스테이크-2,양송이수프-1';
+    const RESULT = '없음';
+    const cashier = new Cashier(ORDER_MENU);
 
-    expect(cashier.freebieMenu()).toEqual(result);
+    expect(cashier.freebieMenu()).toEqual(RESULT);
   });
 });

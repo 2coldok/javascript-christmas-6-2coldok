@@ -1,11 +1,12 @@
 import { BENEFIT_MESSEAGE } from "./BenefitStorage.js";
+import { EVENT_NAME } from "./BenefitStorage.js";
 
 export const priceFilter = (priceNumber) => {
   return new Intl.NumberFormat('ko-KR').format(priceNumber);
 };
 
 export const merageFoodInfo = (foodName, foodAmount) => {
-  return `${foodName} ${foodAmount}개`
+  return `${foodName} ${foodAmount}개`;
 };
 
 export const PRICE_REFINER = Object.freeze({
@@ -19,11 +20,11 @@ export const PRICE_REFINER = Object.freeze({
 
 export const BENEFITS_REFINER = Object.freeze({
   benfitList : (benefitList) => {
-    if (!benefitList.get('condition')) return [BENEFIT_MESSEAGE.non];
+    if (!benefitList.get(EVENT_NAME.condition)) return [BENEFIT_MESSEAGE.non];
 
     const refinedBenefits = [];
     const copyBenefitList = benefitList;
-    copyBenefitList.delete('condition');
+    copyBenefitList.delete(EVENT_NAME.condition);
     copyBenefitList.forEach((value, key) => {
       if (value !== 0) {
         refinedBenefits.push(`${BENEFIT_MESSEAGE[key]}${PRICE_REFINER.negative(value)}`);

@@ -37,7 +37,7 @@ class Event {
   }
 
   weekendDiscount(mainQuantity) {
-    if (mainQuantity === 0) return 0;
+    if (mainQuantity === 0) return DISCOUNT.zero;
     
     if (this.#week() === 'FR' || this.#week() === 'SA') {
       return mainQuantity * DISCOUNT.weekend;
