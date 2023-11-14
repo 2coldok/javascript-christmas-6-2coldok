@@ -18,16 +18,29 @@ export const PRICE_REFINER = Object.freeze({
   },
 });
 
+export const isNotApplicableBenefits = (benefitList) => {
+  const benefitsResultArray = [];
+
+  for (let benefitResult of benefitList.values()) {
+    if (benefitResult !== 0) benefitsResultArray.push(benefitResult);
+  }
+  
+  if (benefitsResultArray.length === 1) return true;
+
+  if (!benefitList.get(EVENT_NAME.condition)) return true;
+
+  return false;
+}
+
 export const BENEFITS_REFINER = Object.freeze({
   benfitList : (benefitList) => {
-    if (!benefitList.get(EVENT_NAME.condition)) return [BENEFIT_MESSEAGE.non];
-
-    const refinedBenefits = [];
-    const copyBenefitList = benefitList;
-    copyBenefitList.delete(EVENT_NAME.condition);
-    copyBenefitList.forEach((value, key) => {
-      if (value !== 0) {
-        refinedBenefits.push(`${BENEFIT_MESSEAGE[key]}${PRICE_REFINER.negative(value)}`);
+    if (isNotApplicableBenefits(benefitList)) return [BENEFIT_MESSEAGE.non];
+    
+    const refinedBenefits = []
+   
+    benefitList.forEach((value, key) => {
+      if (value !==0 && typeof(value) !== 'boolean') {
+        refinedBenefits.push(`${BENEFIT_MESSEAGE[key]}${PRICE_REFINER.negative(value)}`);   
       }
     });
     return refinedBenefits;
