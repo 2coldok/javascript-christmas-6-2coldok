@@ -43,14 +43,6 @@ describe('Cashier 클래스 메서드 단위테스트', () => {
     expect(cashier.foodsListWithQuantity()).toEqual(result);
   });
 
-  test('주문한 음식들의 총 수량을 잘 계산하는지 테스트', () => {
-    const orderMenu = '아이스크림-4,티본스테이크-3,샴페인-2,시저샐러드-1';
-    const result = 10;
-    const cashier = new Cashier(orderMenu);
-
-    expect(cashier.totalFoodsQuantity()).toEqual(result);
-  });
-
   test('주문한 음식들의 총 가격을 잘 계산하는지 테스트', () => {
     const orderMenu = '아이스크림-4,티본스테이크-3,샴페인-2,시저샐러드-1';
     const result = (5000 * 4) + (55000 * 3) + (25000 * 2) + (8000 * 1);

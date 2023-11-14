@@ -24,18 +24,18 @@ class Cashier {
     if (
       this.#foods.length === drinkTypeFoodList.length ||
       foodNameList.length !== new Set(foodNameList).size ||
-      this.totalFoodsQuantity() > ERROR_MENU.maxOrder
+      this.#totalFoodsQuantity() > ERROR_MENU.maxOrder
     ) {
       throw new CustomError(ERROR_MENU.basic);
     }
   }
 
-  foodsListWithQuantity() {
-    return this.#foods.map((foodInfo) => merageFoodInfo(foodInfo.name(), foodInfo.quantity()));
+  #totalFoodsQuantity() {
+    return this.#foods.reduce((acc,cur) => acc + cur.quantity(), 0);
   }
 
-  totalFoodsQuantity() {
-    return this.#foods.reduce((acc,cur) => acc + cur.quantity(), 0);
+  foodsListWithQuantity() {
+    return this.#foods.map((foodInfo) => merageFoodInfo(foodInfo.name(), foodInfo.quantity()));
   }
 
   totalFoodsPrice() {

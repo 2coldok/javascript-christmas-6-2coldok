@@ -73,9 +73,12 @@ describe('Food 클래스 유효성 검증 단위 테스트', () => {
       expect(() => new Food(input)).toThrow('[ERROR]');
   });
 
-  test('메뉴에 없는 음식은 예외처리', () => {
-    const input = '탕후루-5';
-    
+  test.each([
+    ['케이크-3'],
+    ['탕후루-5'],
+    ['티입어본스테이크-1'],
+    ['콜라-10']
+  ])('메뉴에 없는 음식은 예외처리', (input) => {
     expect(() => new Food(input)).toThrow('[ERROR]');
   });
 
