@@ -23,7 +23,7 @@ class Event {
     if (this.#date <= DISCOUNT.christmasDate) {
       return DISCOUNT.christmasBasic + (this.#date - 1) * DISCOUNT.christmasAccumulation;
     }
-    return 0;
+    return DISCOUNT.zero;
   }
 
   weekdayDiscount(desertQuantity) {
@@ -33,7 +33,7 @@ class Event {
       desertQuantity !== 0
     ) return desertQuantity * DISCOUNT.weekday;
     
-    return 0;
+    return DISCOUNT.zero;
   }
 
   weekendDiscount(mainQuantity) {
@@ -42,21 +42,21 @@ class Event {
     if (this.#week() === 'FR' || this.#week() === 'SA') {
       return mainQuantity * DISCOUNT.weekend;
     }
-    return 0;
+    return DISCOUNT.zero;
   }
 
   specialDiscount() {
     if (this.#week() === 'SU' || this.#date === DISCOUNT.christmasDate) {
       return DISCOUNT.special;
     }
-    return 0;
+    return DISCOUNT.zero;
   }
 
   freebieDiscount(totalFoodsPriceBeforeDiscount) {
     if (totalFoodsPriceBeforeDiscount >= DISCOUNT.freebieStandard) {
       return DISCOUNT.freebiePrice;
     }
-    return 0;
+    return DISCOUNT.zero;
   }
 
   condition(totalFoodsPriceBeforeDiscount) {

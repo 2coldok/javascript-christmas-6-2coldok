@@ -8,7 +8,8 @@ export const DISCOUNT = Object.freeze({
   freebieItem : '샴페인 1개',
   freebieStandard : 120000,
   freebiePrice : 25000,
-  eventStandardAmount : 10000,  
+  eventStandardAmount : 10000,
+  zero : 0,  
 });
 
 export const BADGE = Object.freeze({

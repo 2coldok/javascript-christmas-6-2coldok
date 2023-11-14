@@ -44,7 +44,7 @@ class Supervisor {
         + this.benefitList().get('special') 
         + this.benefitList().get('freebie');
     }
-    return 0;
+    return DISCOUNT.zero;
   }
   
   finalPaymentAmount() {
