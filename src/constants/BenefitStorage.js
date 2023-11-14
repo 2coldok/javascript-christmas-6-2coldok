@@ -12,6 +12,15 @@ export const DISCOUNT = Object.freeze({
   zero : 0,  
 });
 
+export const EVENT_NAME = Object.freeze({
+  christmas : 'christmas',
+  weekday : 'weekday',
+  weekend : 'weekend',
+  special : 'special',
+  freebie : 'freebie',
+  condition : 'condition',
+});
+
 export const BADGE = Object.freeze({
   star : 5000,
   tree : 10000,

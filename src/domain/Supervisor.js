@@ -1,6 +1,6 @@
 import Event from "./Event.js";
 import Cashier from "./Cashier.js";
-import { DISCOUNT } from "../constants/BenefitStorage.js";
+import { DISCOUNT, EVENT_NAME } from "../constants/BenefitStorage.js";
 import { NAME } from "../constants/FoodStorage.js";
 
 class Supervisor {
@@ -28,21 +28,21 @@ class Supervisor {
     const benefits = new Map();
 
     return benefits
-      .set('christmas', this.#event.christmasDDayDiscount())
-      .set('weekday', this.#event.weekdayDiscount(this.#cashier.totalTypeQuantity(NAME.desert)))
-      .set('weekend', this.#event.weekendDiscount(this.#cashier.totalTypeQuantity(NAME.main)))
-      .set('special', this.#event.specialDiscount())
-      .set('freebie', this.#event.freebieDiscount(this.#cashier.totalFoodsPrice()))
-      .set('condition', this.#event.condition(this.#cashier.totalFoodsPrice()));
+      .set(EVENT_NAME.christmas, this.#event.christmasDDayDiscount())
+      .set(EVENT_NAME.weekday, this.#event.weekdayDiscount(this.#cashier.totalTypeQuantity(NAME.desert)))
+      .set(EVENT_NAME.weekend, this.#event.weekendDiscount(this.#cashier.totalTypeQuantity(NAME.main)))
+      .set(EVENT_NAME.special, this.#event.specialDiscount())
+      .set(EVENT_NAME.freebie, this.#event.freebieDiscount(this.#cashier.totalFoodsPrice()))
+      .set(EVENT_NAME.condition, this.#event.condition(this.#cashier.totalFoodsPrice()));
   }
 
   totalBenefitAmount() {
-    if (this.benefitList().get('condition')) {
-      return this.benefitList().get('christmas')
-        + this.benefitList().get('weekday') 
-        + this.benefitList().get('weekend') 
-        + this.benefitList().get('special') 
-        + this.benefitList().get('freebie');
+    if (this.benefitList().get(EVENT_NAME.condition)) {
+      return this.benefitList().get(EVENT_NAME.christmas)
+        + this.benefitList().get(EVENT_NAME.weekday) 
+        + this.benefitList().get(EVENT_NAME.weekend) 
+        + this.benefitList().get(EVENT_NAME.special) 
+        + this.benefitList().get(EVENT_NAME.freebie);
     }
     return DISCOUNT.zero;
   }

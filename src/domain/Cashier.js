@@ -3,6 +3,7 @@ import CustomError from "../error/CustomError.js";
 import { ERROR_MENU } from "../constants/ErrorMesseage.js";
 import { merageFoodInfo } from "../constants/ViewRefiner.js";
 import { DISCOUNT, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
+import { NAME } from "../constants/FoodStorage.js";
 
 class Cashier {
   #foods = [];
@@ -19,7 +20,7 @@ class Cashier {
   }
 
   #orderValidator() {
-    const drinkTypeFoodList = this.#foods.filter((food) => food.type() === 'drink');
+    const drinkTypeFoodList = this.#foods.filter((food) => food.type() === NAME.drink);
     const foodNameList = this.#foods.map((food) => food.name());
     if (
       this.#foods.length === drinkTypeFoodList.length ||
