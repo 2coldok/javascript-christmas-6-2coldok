@@ -19,7 +19,7 @@ describe('이벤트 관리자 Event 클래스 테스트', () => {
     const event = new Event('25');
     
     expect(event.date()).toEqual(25)
-  })
+  });
 
   test.each([['26'], ['27'], ['28'], ['29'], ['30'], ['31']])('크리스마스D-Day 할인금액은 25일 이후 0원', (input) => {
     const event = new Event(input);

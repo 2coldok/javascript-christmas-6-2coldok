@@ -10,7 +10,7 @@ export const dateValidator = (date) => {
   ) {
     throw new CustomError(ERROR_DATE.basic);
   }
-}
+};
 
 export const foodValidator = (foodInfoArray) => {
   const foodName = foodInfoArray[KNIFE.namePosition];
@@ -24,7 +24,7 @@ export const foodValidator = (foodInfoArray) => {
   ) {
     throw new CustomError(ERROR_MENU.basic);
   }
-}
+};
 
 export const nonFoodInMenu = (foodName) => {
   const foodType = MENU
@@ -33,10 +33,10 @@ export const nonFoodInMenu = (foodName) => {
   if (foodType.length === 0) {
     return true;
   }
-}
+};
 
 export const nonFoodQuantity = (foodQuantity) => {
   if (foodQuantity === 0) {
     return true;
   }
-}
+};
