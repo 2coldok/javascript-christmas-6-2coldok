@@ -48,10 +48,13 @@ class Supervisor {
   }
 
   #totalDiscountAmount() {
-    return this.benefitList().get(EVENT_NAME.christmas)
+    if (this.benefitList().get(EVENT_NAME.condition)) {
+      return this.benefitList().get(EVENT_NAME.christmas)
       + this.benefitList().get(EVENT_NAME.weekday)
       + this.benefitList().get(EVENT_NAME.weekend)
       + this.benefitList().get(EVENT_NAME.special);
+    }
+    return DISCOUNT.zero;
   }
 
   finalPaymentAmount() {
