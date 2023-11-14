@@ -20,7 +20,7 @@ class Food {
 
   #category() {
     const [foodTypeInfo] = MENU
-      .filter((foodTypeInfo) => foodTypeInfo.hasOwnProperty(this.#name));
+      .filter((foodTypeInfo) => Object.hasOwn(foodTypeInfo, this.#name));
   
     return foodTypeInfo;
   }

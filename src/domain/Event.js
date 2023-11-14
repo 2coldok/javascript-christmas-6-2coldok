@@ -63,7 +63,7 @@ class Event {
     if (totalFoodsPriceBeforeDiscount >= DISCOUNT.eventStandardAmount) {
       return true;
     }
-    return false
+    return false;
   }
 
   getBadge(totalBenefitAmount) { 

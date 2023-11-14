@@ -1,5 +1,4 @@
 import Food from "./Food.js";
-import CustomError from "../error/CustomError.js";
 import { ERROR_MENU } from "../constants/ErrorMesseage.js";
 import { merageFoodInfo } from "../constants/ViewRefiner.js";
 import { DISCOUNT, BENEFIT_MESSEAGE } from "../constants/BenefitStorage.js";
@@ -27,7 +26,7 @@ class Cashier {
       foodNameList.length !== new Set(foodNameList).size ||
       this.#totalFoodsQuantity() > ERROR_MENU.maxOrder
     ) {
-      throw new CustomError(ERROR_MENU.basic);
+      throw new Error(ERROR_MENU.basic);
     }
   }
 
