@@ -17,7 +17,7 @@ class Food {
   #enrollFood(food) {
     const foodInfoArray = food.split(KNIFE.bladePosition); 
     this.#name = foodInfoArray[KNIFE.namePosition];
-    this.#quantity = Number(foodInfoArray[KNIFE.quantityPosition].trim());
+    this.#quantity = Number(foodInfoArray[KNIFE.quantityPosition]);
 
     return foodInfoArray;
   }

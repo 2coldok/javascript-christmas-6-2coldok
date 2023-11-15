@@ -38,6 +38,7 @@ export const foodValidator = (foodInfoArray) => {
     nonFoodInMenu(foodName) ||
     Number.isNaN(foodQuantity) ||
     !Number.isInteger(foodQuantity) ||
+    typeof foodQuantity !== 'number' ||
     nonFoodQuantity(foodQuantity)
   ) {
     throw new Error(ERROR_MENU.basic);
