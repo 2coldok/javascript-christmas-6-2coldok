@@ -27,12 +27,12 @@ describe('Supervisor 클래스 단위테스트', () => {
     supervisor.menuUpload(MENU);
     const map = new Map();
     map
-    .set('christmas', 1000 + (10 - 1) * 100)
-    .set('weekday', 5 * 2023)
-    .set('weekend', 0)
-    .set('special', 1000)
-    .set('freebie', 25000)
-    .set('condition', true);
+      .set('christmas', 1000 + (10 - 1) * 100)
+      .set('weekday', 5 * 2023)
+      .set('weekend', 0)
+      .set('special', 1000)
+      .set('freebie', 25000)
+      .set('condition', true);
 
     const BENEFITS_LIST = map;
 
@@ -47,12 +47,12 @@ describe('Supervisor 클래스 단위테스트', () => {
     supervisor.menuUpload(MENU);
     const map = new Map();
     map
-    .set('christmas', 1000 + (24 - 1) * 100)
-    .set('weekday', 20 * 2023)
-    .set('weekend', 0)
-    .set('special', 1000)
-    .set('freebie', 0)
-    .set('condition', true);
+      .set('christmas', 1000 + (24 - 1) * 100)
+      .set('weekday', 20 * 2023)
+      .set('weekend', 0)
+      .set('special', 1000)
+      .set('freebie', 0)
+      .set('condition', true);
 
     const BENEFITS_LIST = map;
 
@@ -71,12 +71,12 @@ describe('Supervisor 클래스 단위테스트', () => {
     supervisor.menuUpload(MENU);
     const map = new Map();
     map
-    .set('christmas', 1000 + (3 - 1) * 100)
-    .set('weekday', 2 * 2023)
-    .set('weekend', 0)
-    .set('special', 1000)
-    .set('freebie', 25000)
-    .set('condition', true);
+      .set('christmas', 1000 + (3 - 1) * 100)
+      .set('weekday', 2 * 2023)
+      .set('weekend', 0)
+      .set('special', 1000)
+      .set('freebie', 25000)
+      .set('condition', true);
 
     const BENEFITS_LIST = map;
 

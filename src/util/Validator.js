@@ -16,7 +16,7 @@ export const dateValidator = (date) => {
 
 export const nonFoodInMenu = (foodName) => {
   const foodType = MENU
-    .filter((foodType) => Object.hasOwn(foodType, foodName));
+    .filter((type) => Object.hasOwn(type, foodName));
 
   if (foodType.length === 0) {
     return true;

@@ -1,13 +1,9 @@
 import { BENEFIT_MESSEAGE } from "./BenefitStorage.js";
 import { EVENT_NAME } from "./BenefitStorage.js";
 
-export const priceFilter = (priceNumber) => {
-  return new Intl.NumberFormat('ko-KR').format(priceNumber);
-};
+export const priceFilter = (priceNumber) => new Intl.NumberFormat('ko-KR').format(priceNumber);
 
-export const merageFoodInfo = (foodName, foodAmount) => {
-  return `${foodName} ${foodAmount}개`;
-};
+export const merageFoodInfo = (foodName, foodAmount) => `${foodName} ${foodAmount}개`;
 
 export const PRICE_REFINER = Object.freeze({
   positive : (priceNumber) => `${priceFilter(priceNumber)}원`,
@@ -24,10 +20,11 @@ export const isNotApplicableBenefits = (benefitList) => {
     if (benefitResult !== 0) benefitsResultArray.push(benefitResult);
   }
   if (benefitsResultArray.length === 1) return true;
+
   if (!benefitList.get(EVENT_NAME.condition)) return true;
 
   return false;
-}
+};
 
 export const BENEFITS_REFINER = Object.freeze({
   benfitList : (benefitList) => {

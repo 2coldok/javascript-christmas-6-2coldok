@@ -69,7 +69,7 @@ class Event {
     }
     return false;
   }
-
+  
   getBadge(totalBenefitAmount) { 
     if (totalBenefitAmount < BADGE.star) {
       return BENEFIT_MESSEAGE.non;
