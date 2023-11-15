@@ -101,11 +101,11 @@ describe('Supervisor 클래스 단위테스트', () => {
     const FREEBIE_DISCOUNT = 25000;
 
     const TOTAL_DISCOUNT_AMOUNT = 
-    CHRISTMAS_DISCOUNT + 
-    WEEKDAY_DISCOUNT + 
-    WEEKEND_DISCOUNT + 
-    SPECIAL_DISCOUNT + 
-    FREEBIE_DISCOUNT;
+      CHRISTMAS_DISCOUNT + 
+      WEEKDAY_DISCOUNT + 
+      WEEKEND_DISCOUNT + 
+      SPECIAL_DISCOUNT + 
+      FREEBIE_DISCOUNT;
 
     expect(supervisor.totalBenefitAmount()).toEqual(TOTAL_DISCOUNT_AMOUNT);
   });
@@ -145,6 +145,30 @@ describe('Supervisor 클래스 단위테스트', () => {
 
     const BADGE = '없음';
 
+    expect(supervisor.giveBadge()).toEqual(BADGE);
+  });
+
+  test('혜택 금액에 해당하는 등급의 뱃지를 수여하는지 테스트 3', () => {
+    const DATE = '6';
+    const MENU = '아이스크림-3';
+    const supervisor = new Supervisor();
+    supervisor.dateUpload(DATE);
+    supervisor.menuUpload(MENU);
+
+    const BADGE = '별';
+    
+    expect(supervisor.giveBadge()).toEqual(BADGE);
+  });
+
+  test('혜택 금액에 해당하는 등급의 뱃지를 수여하는지 테스트 4', () => {
+    const DATE = '6';
+    const MENU = '아이스크림-5';
+    const supervisor = new Supervisor();
+    supervisor.dateUpload(DATE);
+    supervisor.menuUpload(MENU);
+
+    const BADGE = '트리';
+    
     expect(supervisor.giveBadge()).toEqual(BADGE);
   });
 });

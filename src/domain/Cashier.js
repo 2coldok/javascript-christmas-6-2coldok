@@ -60,7 +60,7 @@ class Cashier {
   }
 
   freebieMenu() {
-    if (this.totalFoodsPrice() > DISCOUNT.freebieStandard) {
+    if (this.totalFoodsPrice() >= DISCOUNT.freebieStandard) {
       return DISCOUNT.freebieItem;
     }
     return BENEFIT_MESSEAGE.non;

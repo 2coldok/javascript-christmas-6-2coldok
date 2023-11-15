@@ -31,18 +31,13 @@ class Event {
   }
 
   weekdayDiscount(desertQuantity) {
-    if (
-      this.#week() !== 'FR' &&
-      this.#week() !== 'SA' &&
-      desertQuantity !== 0
-    ) return desertQuantity * DISCOUNT.weekday;
-    
+    if (this.#week() !== 'FR' && this.#week() !== 'SA') {
+      return desertQuantity * DISCOUNT.weekday;
+    }
     return DISCOUNT.zero;
   }
 
   weekendDiscount(mainQuantity) {
-    if (mainQuantity === 0) return DISCOUNT.zero;
-    
     if (this.#week() === 'FR' || this.#week() === 'SA') {
       return mainQuantity * DISCOUNT.weekend;
     }
