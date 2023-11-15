@@ -1,14 +1,14 @@
 import Event from "../src/domain/Event.js";
 
 describe('이벤트 관리자 Event 클래스 테스트', () => {
-  test.each([['0'], ['-25'], ['1.1'] ['32']])('1부터 31 사이의 자연수가 아닐시 예외처리', (input) => {
+  test.each([['0'], ['-25'], ['1.1'], ['32']])('1부터 31 사이의 자연수가 아닐시 예외처리', (input) => {
     expect(() => {
       const event = new Event(input);
       event.date()
     }).toThrow('[ERROR]');
   });
 
-  test.each([['a'], ['!'], [' '], ['3a'], ['가']])('숫자 이외의 공백을 포함한 문자 예외처리', (input) => {
+  test.each([['a'], ['!'], [' '], ['3a'], ['가'], ['1 '], ['1.0']])('숫자 이외의 공백을 포함한 문자 예외처리', (input) => {
     expect(() => {
       const event = new Event(input);
       event.date();

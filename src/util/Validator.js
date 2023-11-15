@@ -3,10 +3,12 @@ import { MENU, KNIFE } from "../constants/FoodStorage.js";
 
 export const dateValidator = (date) => {
   if (
-    Number.isNaN(date) ||
-    !Number.isInteger(date) ||
-    date < ERROR_DATE.minDate ||
-    date > ERROR_DATE.maxDate
+    date.includes(' ') ||
+    date.includes('.') ||
+    Number.isNaN(Number(date)) ||
+    !Number.isInteger(Number(date)) ||
+    Number(date) < ERROR_DATE.minDate ||
+    Number(date) > ERROR_DATE.maxDate
   ) {
     throw new Error(ERROR_DATE.basic);
   }
@@ -29,17 +31,15 @@ export const nonFoodQuantity = (foodQuantity) => {
   return false;
 };
 
-export const foodValidator = (foodInfoArray) => {
-  const foodName = foodInfoArray[KNIFE.namePosition];
-  const foodQuantity = Number(foodInfoArray[KNIFE.quantityPosition]);
-
+export const foodValidator = (foodInfo) => {
   if (
-    foodInfoArray.length !== 2 ||
-    nonFoodInMenu(foodName) ||
-    Number.isNaN(foodQuantity) ||
-    !Number.isInteger(foodQuantity) ||
-    typeof foodQuantity !== 'number' ||
-    nonFoodQuantity(foodQuantity)
+    foodInfo.length !== 2 ||
+    foodInfo[KNIFE.quantityPosition].includes('.') ||
+    foodInfo[KNIFE.quantityPosition].includes(' ') ||
+    Number.isNaN(Number(foodInfo[KNIFE.quantityPosition])) ||
+    !Number.isInteger(Number(foodInfo[KNIFE.quantityPosition])) ||
+    nonFoodInMenu(foodInfo[KNIFE.namePosition]) ||
+    nonFoodQuantity(Number(foodInfo[KNIFE.quantityPosition]))
   ) {
     throw new Error(ERROR_MENU.basic);
   }

@@ -9,7 +9,7 @@ class Event {
   #date;
 
   constructor(date) {
-    dateValidator(Number(date));    
+    dateValidator(date);    
     this.#date = Number(date);
   }
 
