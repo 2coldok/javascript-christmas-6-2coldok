@@ -24,7 +24,7 @@ class EventPlanner {
 
     } catch (error) {
       OutputView.printErrorMesseage(error);
-      return await this.getDate();
+      await this.getDate();
     }  
   }
 
@@ -34,7 +34,7 @@ class EventPlanner {
       
     } catch (error) {
       OutputView.printErrorMesseage(error);
-      return await this.getMenu();
+      await this.getMenu();
     }
   }
 
