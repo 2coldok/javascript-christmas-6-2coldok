@@ -22,9 +22,16 @@ const DRINK = Object.freeze({
   샴페인 : 25000,
 });
 
-export const MENU_BOARD = Object.freeze({
-  APPETIZER,
-  MAIN,
-  DESERT,
-  DRINK,
-});
+
+
+export const MENU = new Map()
+.set(0, APPETIZER)
+.set(1, MAIN)
+.set(2, DESERT)
+.set(3, DRINK);
+
+export const TYPE = new Map()
+.set(0, 'appetizer')
+.set(1, 'main')
+.set(2, 'desert')
+.set(3, 'drink');

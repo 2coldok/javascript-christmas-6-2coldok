@@ -10,7 +10,7 @@
 Calendar 날짜 관리 클래스   
 Event 모든 이벤트 관리 클래스   
 객체 메뉴판
-Foods 
+Food
 
 <인풋>      
 input : 방문날짜, 주문할 메뉴들
