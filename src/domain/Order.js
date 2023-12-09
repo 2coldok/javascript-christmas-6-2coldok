@@ -41,10 +41,13 @@ class Order {
       .map((food) => food.getAmount())
       .reduce((acc, cur) => acc + cur, 0);
   }
-
+  
+  //14, 제로콜라-1,레드와인-2,샴페인-2,타파스-1
   #dupleOrderValidator() {
     const foodNames = this.#foods.map((food) => food.getName());
+    console.log(foodNames);
     if (foodNames.length !== new Set(foodNames).size) {
+      this.#foods = [];
       throw new Error('[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.(중복 메뉴)');
     }
   }
@@ -57,10 +60,12 @@ class Order {
     console.log(`메인 개수 : ${this.#totalTypeAmount('main')}`);
     console.log(`디저트 개수 : ${this.#totalTypeAmount('desert')}`);
     if (totalFoodsAmount > 20) {
+      this.#foods = [];
       throw new Error('[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.(주문 개수 20개 이상)');
     }
 
     if (this.#totalTypeAmount('drink') === totalFoodsAmount) {
+      this.#foods = [];
       throw new Error('[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.(음료만 주문)');
     }
   }
