@@ -9,9 +9,13 @@ class Event {
     this.#date = date;
     this.#calendar = new Calendar(2023, 12, date);
   }
+
+  getDate() {
+    return this.#date;
+  }
   // 총주문 금액에서 이만큼 할인
   chirstmasDDayDiscount() {
-    if (this.#calendar.bringDate() >=1 || this.#calendar.bringDate() <= 25) {
+    if (this.#calendar.bringDate() >=1 && this.#calendar.bringDate() <= 25) {
       return 1000 + (this.#date - 1) * 100;
     } else {
       return 0;

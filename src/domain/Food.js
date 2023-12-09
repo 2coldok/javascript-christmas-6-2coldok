@@ -1,17 +1,48 @@
 import { MENU, TYPE } from "../constants/MenuBoard.js";
+const NUMBER = /^[0-9]*$/;
 
 class Food {
 #name;
 #amount;
   // 타파스-2
   constructor(foodInfo) {
-   this.#cook(foodInfo); 
+    this.#foodInfoFormValidator(foodInfo);
+    this.#cook(foodInfo);
+    this.#nonFoodValidator(); 
+    this.#minFoodAmountValidator();
   }
 
   #cook(foodInfo) {
     const [name, amount] = foodInfo.split('-');
     this.#name = name;
-    this.#amount = amount;
+    this.#amount = Number(amount);
+  }
+
+  #nonFoodValidator() {
+    if (this.getType() === undefined) {
+      throw new Error('[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.(메뉴에 없는 음식)');
+    }
+  }
+
+  #minFoodAmountValidator() {
+    if (this.getAmount() < 1) {
+      throw new Error('[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.(음식 수량중에 1보다 작은게 있음)');
+    }
+  }
+
+  #foodInfoFormValidator(foodInfo) {
+    if (
+      !foodInfo.includes('-') ||
+      foodInfo.split('-').length !== 2 
+    ) {
+      throw new Error('[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.(형식 오류1)');
+    }
+    const [foodName, amount] = foodInfo.split('-');
+    if (!NUMBER.test(amount)) {
+      throw new Error('[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.(형식 오류2)');
+    }
+
+    
   }
 
   getName() {
