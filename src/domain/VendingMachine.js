@@ -1,10 +1,13 @@
 import CoinGenrator from "./CoinGenerator.js";
 // 배열 거꾸로 어떻게
 // 특정 문자 제거
+// every some find 다시 정리
 class VendingMachine {
   #coins;
-
   #items;
+
+  #inputPrice;
+  #buyItem;
 
   setVendingMachinPrice(price) {
     const coinGenerator = new CoinGenrator(price);
@@ -18,7 +21,8 @@ class VendingMachine {
       return [coin, this.#coins[coin]];
     });
   }
-
+  
+  // Map(2) { '콜라' => [ '1500', '20' ], '사이다' => [ '1000', '10' ] }
   setItems(items) {
     const map = new Map();
 
@@ -32,13 +36,105 @@ class VendingMachine {
     this.#items = map;
   }
 
-  
+  //////////////////////////////////////////////////////////////
+  updateAtInputPrice() {
+
+
+  }
+
+  decreaseItemAmount() {
+    const [price, amount] = this.#items.get(this.#buyItem);
+    const newAmount = amount - 1;
+    this.#items.set(this.#buyItem, [price, newAmount]);
+  }
+
+  /////////////////////// true 반환시 : 잔돈줘야되는 타이밍, false 반환시 : 잔돈 타이밍 아님 ㅇㅇ
+  inputPrice(price) {
+    this.#inputPrice = price;
+    if (this.isInsufficientPriceInAllItems() || this.isAllItemAmountZero()) {
+      return true;
+    }
+    return false; 
+  }
+
+  buyItem(name) {
+    this.#buyItem = name;
+    if (this.isInsufficientPrice() || this.isItemAmountZero()) {
+      return true;
+    }
+    this.decreaseItemAmount();
+    return false;
+  }
+/////////////////////////////////////////////
+  isInsufficientPriceInAllItems() {
+    return Array.from(this.#items).every((element) => {
+      const [name, [price, amount]] = element;
+      return this.#inputPrice < price;
+    })
+  }
+
+  isInsufficientPrice() {
+    const [price, amount] = this.#items.get(this.#buyItem);
+    if (this.#inputPrice < price) {
+      return true;
+    }
+    return false;
+  }
+
+  isItemAmountZero() {
+    const [price, amount] = this.#items.get(this.#buyItem);
+    if (amount === 0) {
+      return true;
+    }
+    return false;
+  }
+
+  isAllItemAmountZero() {
+    return Array.from(this.#items).every((element) => {
+      const [name, [price, amount]] = element;
+      return amount === 0;
+    });
+  }
+  ////////////////////////////////////////////////////////////
+
+  getChanges() {
+    return this.#items;
+  }
 }
 
 export default VendingMachine;
-
+/*
 const a = new VendingMachine();
+a.setVendingMachinPrice(450);
+a.showVendingMachineCoins();
+a.setItems('[콜라,1500,1];[사이다,1000,1]');
 
-a.setItems('[콜라,1500,20];[사이다,1000,10]');
+a.inputPrice(2000);
+a.buyItem('콜라');
+
+a.inputPrice(900);
+const k = a.buyItem('사이다');
+
+console.log(k);*/
+/*
+a.inputPrice(3000);
+a.buyItem('사이다');
+
+a.inputPrice(2000);
+a.buyItem('콜라');
+
+a.inputPrice(2000);
+a.buyItem('콜라');
+
+a.inputPrice(1000);
+const k = a.buyItem('사이다');
+console.log(k);
+*/
+console.log(a.getChanges());
+
+
+
+
+
 // #items 생김새 : Map(2) { '콜라' => [ '1500', '20' ], '사이다' => [ '1000', '10' ] }
 
