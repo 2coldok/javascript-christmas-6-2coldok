@@ -1,7 +1,23 @@
-export default InputView = {
-    async readDate() {
-        const input = await Console.readLineAsync("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
-        // ...
-    }
-    // ...
-}
+import { Console } from "@woowacourse/mission-utils";
+
+const InputView = {
+  async readVendingMachinePrice() {
+    const price = await Console.readLineAsync('자판기가 보유하고 있는 금액을 입력해 주세요.\n');
+    return Number(price);
+  },
+
+  async readItems() {
+    return await Console.readLineAsync('상품명과 가격, 수량을 입력해 주세요.\n');
+  },
+
+  async readInputPrice() {
+    const price = await Console.readLineAsync('투입 금액을 입력해 주세요.\n');
+    return Number(price);
+  },
+
+  async readBuyItem() {
+    return await Console.readLineAsync('구매할 상품명을 입력해 주세요.\n');
+  },
+};
+
+export default InputView;

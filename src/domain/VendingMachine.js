@@ -1,7 +1,6 @@
 import CoinGenrator from "./CoinGenerator.js";
-// 배열 거꾸로 어떻게
-// 특정 문자 제거
-// every some find 다시 정리
+import MinimumChanges from "./MinimumChanges.js";
+
 class VendingMachine {
   #coins;
   #items;
@@ -98,7 +97,9 @@ class VendingMachine {
   ////////////////////////////////////////////////////////////
 
   getChanges() {
-    return this.#items;
+    const minimum = new MinimumChanges(this.#inputPrice);
+
+    return minimum.getData();
   }
 }
 
@@ -130,7 +131,7 @@ a.inputPrice(1000);
 const k = a.buyItem('사이다');
 console.log(k);
 */
-console.log(a.getChanges());
+
 
 
 

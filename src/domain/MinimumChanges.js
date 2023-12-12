@@ -1,5 +1,4 @@
 
-// 소수점 제거 방법 Math.floor() : 소수점 버림, 정수 반환
 
 class MinimumChanges {
   #COIN = [500, 100, 50, 10];
