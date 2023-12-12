@@ -39,16 +39,17 @@ class CoinGenerator {
     
     return coin;
   }
-
-  getCoinData() {
+  
+  // [ [ 10, 5 ], [ 50, 2 ], [ 100, 3 ], [ 500, 0 ] ]
+  getRandomCoins() {
     return Array.from(this.#coinMap);
   }
 }
 
 export default CoinGenerator;
+/*
+const coinGenerator = new CoinGenerator(450);
 
-const a = new CoinGenerator(450);
+const k = coinGenerator.getRandomCoins();
 
-const k = a.getCoinData();
-
-console.log(k);
+console.log(k);*/
