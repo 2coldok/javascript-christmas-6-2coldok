@@ -6,10 +6,6 @@ class VendingMachine {
 
   #pickItem;
   
-  constructor() {
-
-  }
-
   setInputMoney(inputMoney) {
     this.#inputMoney = Number(inputMoney);
   }
@@ -56,12 +52,6 @@ class VendingMachine {
       return false;
     }
   }
-
-  
-
-  
-
-  
 }
 
 export default VendingMachine;

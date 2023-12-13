@@ -15,10 +15,10 @@ class CoinGenerator {
 
   #setCoinMap() {
     this.#coinMap = new Map()
-    .set(10, 0)
-    .set(50, 0)
+    .set(500, 0)
     .set(100, 0)
-    .set(500, 0);
+    .set(50, 0)
+    .set(10, 0);
   }
 
   #setCoins() {
@@ -40,16 +40,10 @@ class CoinGenerator {
     return coin;
   }
   
-  // [ [ 10, 5 ], [ 50, 2 ], [ 100, 3 ], [ 500, 0 ] ]
-  getRandomCoins() {
-    return Array.from(this.#coinMap);
+  
+  getRandomCoinsMap() {
+    return this.#coinMap;
   }
 }
 
 export default CoinGenerator;
-/*
-const coinGenerator = new CoinGenerator(450);
-
-const k = coinGenerator.getRandomCoins();
-
-console.log(k);*/
