@@ -12,13 +12,14 @@ class Coin {
   
   // 차액 -> 새로운 차액
   calculate(differenceMoney) {
-    if (this.#coin <= differenceMoney) {
+    if (this.#coin <= differenceMoney && this.#amount !== 0) {
       const quotient = Math.floor(differenceMoney / this.#coin);
       const remainder = differenceMoney - this.#coin * quotient;
       this.#count = quotient;
       
       return remainder;
     } else {
+      this.#count = 0;
       return differenceMoney;
     }
   }

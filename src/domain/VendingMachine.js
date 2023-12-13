@@ -55,10 +55,11 @@ class VendingMachine {
 }
 
 export default VendingMachine;
-
+/*
 const vendingMachine = new VendingMachine();
 vendingMachine.setInputMoney('2000');
 vendingMachine.setItems('[콜라,1500,20];[사이다,1000,10]');
 vendingMachine.setPickItem('콜라');
 
 console.log(vendingMachine.isLowerMoneyThanPickItemPrice());
+*/
