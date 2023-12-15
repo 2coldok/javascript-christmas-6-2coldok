@@ -12,7 +12,7 @@ input : course
 
 
 
-## form 변환 (보드에 전달할 매개변수를 위하여)
+## form 변환 (보드에 전달할 매개변수를 위하여)(1)
 - 보드 form
 - data : [프론트엔드, 레벨1, 자동차경주] -> {mission : mission, levelPairs : [level, pairs]} 로 변환
 - 매칭 form
@@ -24,7 +24,7 @@ frontMap = new Map()
 map.set(missionm, [level, pairs])
 backMap = new Map()
 
-- 매칭 정보 저장
+- 매칭 정보 저장(1)
 - 매칭 정보 조회 (정보가 있는지 없는지도 판단해야 함)
 - 같은 레벨에 같은 페어가 있는지 확인 : 
 (정보, 랜덤 페어 배열) -> 확인 후 문제 없으면 저장, 아니면 저장 안함 -> 시도횟수 기록 -> 문제 있으면 reject 반환
