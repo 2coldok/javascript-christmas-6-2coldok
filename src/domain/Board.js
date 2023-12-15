@@ -2,9 +2,11 @@ import { boardForm } from "../utils/Formatter.js";
 /* 사용법
 1. searchHasDataInBoard(data) 로 매칭 기록이 잇는지 확인 true 면 매칭 기록 잇는거임 
 매칭 저장전, 조회전 외부에서 이용하기
-2. 같은 레벨에 같은 페어 잇는지 확인
-3. record(data, pairs) 랜덤 pair 저장
 
+2. 같은 레벨에 같은 페어 잇는지 확인 
+3. record(data, pairs) 랜덤 pair 저장
+4. getPairs(data) 페어 조회
+5. reset() 초기화
 */
 
 class Board {
@@ -60,6 +62,11 @@ class Board {
     return pairs;
   }
 
+  reset() {
+    this.#frontendBoard.clear();
+    this.#backendBoard.clear();
+  }
+
 
   getMap() {
     return this.#frontendBoard;
@@ -75,6 +82,6 @@ const a = new Board();
 a.record(['프론트엔드', '레벨1', '자동차경주'], [['a', 'b'], ['c', 'd']]);
 a.record(['프론트엔드', '레벨1', '로또'], [[1,2], [3,4]]);
 a.record(['프론트엔드', '레벨1', '숫자 야구'], [1,2])
-
-console.log(a.getPairs(['프론트엔드', '레벨1', '숫자 야구']));
+a.reset();
+console.log(a.getMap())
 

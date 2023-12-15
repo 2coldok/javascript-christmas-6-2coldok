@@ -19,7 +19,7 @@ input : course
 - data : [프론트엔드, 레벨1, 자동차경주] -> course 로 변환
 
 ## 보드 구현
-- 구조
+- 구조(1)
 frontMap = new Map()
 map.set(missionm, [level, pairs])
 backMap = new Map()
@@ -29,7 +29,7 @@ backMap = new Map()
 - 
 - 같은 레벨에 같은 페어가 있는지 확인 : 
 (정보, 랜덤 페어 배열) -> 확인 후 문제 없으면 저장, 아니면 저장 안함 -> 시도횟수 기록 -> 문제 있으면 reject 반환
-- 페어 초기화 (마지막에 구현하기)
+- 페어 초기화 (마지막에 구현하기) (1)
 
 <예외 처리>
 
