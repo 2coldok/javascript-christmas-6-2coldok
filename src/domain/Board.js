@@ -77,11 +77,11 @@ class Board {
 }
 
 export default Board;
-
+/*
 const a = new Board();
 a.record(['프론트엔드', '레벨1', '자동차경주'], [['a', 'b'], ['c', 'd']]);
 a.record(['프론트엔드', '레벨1', '로또'], [[1,2], [3,4]]);
 a.record(['프론트엔드', '레벨1', '숫자 야구'], [1,2])
 a.reset();
 console.log(a.getMap())
-
+*/
