@@ -3,28 +3,38 @@ import PairMatching from "../domain/PairMatching.js";
 import InputView from "../view/InputView.js";
 import OutputView from "../view/OutputView.js";
 import { matchingForm } from "../utils/Formatter.js";
+import { choiceValidator, dataValidator, YesOrNoValidator } from "../utils/Validator.js";
 
 class Controller {
   #board;
+  #remathcingCount = 0;
 
   constructor() {
     this.#board = new Board();
   }
 
   async boot() {
-    while (true) {
-      const choice = await this.getChoice();
-      if (choice === '1') {
-        OutputView.printTemplete();
-        await this.pairMatching();
-      } 
-      if (choice === '2') {
-        OutputView.printTemplete();
-        await this.pairSearching();
+    try {
+      while (true) {
+        const choice = await this.getChoice();
+        choiceValidator(choice);
+        if (choice === '1') {
+          OutputView.printTemplete();
+          await this.pairMatching();
+        } 
+        if (choice === '2') {
+          OutputView.printTemplete();
+          await this.pairSearching();
+        }
+        if (choice === '3') this.resetBoard(); 
+        if (choice === 'Q') break;
       }
-      if (choice === '3') this.resetBoard(); 
-      if (choice === 'Q') break;
+
+    } catch (error) {
+      OutputView.printError(error);
+      return await this.boot();
     }
+
   }
 
   async pairMatching() {
@@ -42,23 +52,41 @@ class Controller {
     
     // 매칭 정보가 없으면
     if (!this.#board.searchHasDataInBoard(data)) {
-      return this.startMatching(data);
+      return await this.startMatching(data);
     }
     
   }
 
-  startMatching(data) {
-    const pairMatching = new PairMatching(matchingForm(data));
-    const pairs = pairMatching.getPairs();
-    // 레벨 페어 중복 확인 (to do)
-    this.#board.record(data, pairs);
-    OutputView.printPairs(this.#board.getPairs(data));
+  async startMatching(data) {
+    try {
+      const pairMatching = new PairMatching(matchingForm(data));
+      const pairs = pairMatching.getPairs();
+      if (this.#remathcingCount > 3) throw new Error('[ERROR] 3회 이상 매칭 실패');
+      if (this.#board.searchSameLevelPairAlready(data, pairs)) {
+        this.#remathcingCount += 1;
+        return this.startMatching(data);
+      }
+      // 레벨 페어 중복 확인 (to do)
+      // 3회 초과 카운트 (to do)
+      this.#board.record(data, pairs);
+      OutputView.printPairs(this.#board.getPairs(data));
+      this.#remathcingCount = 0;
+
+    } catch (error) {
+      OutputView.printError(data);
+      return await this.pairMatching();
+    }
   }
 
   async pairSearching() {
-    const data = await this.getData();
-    // todo 해당 기록이 없을 경우
-    OutputView.printPairs(this.#board.getPairs(data));
+    try {
+      const data = await this.getData();
+      if (!this.#board.searchHasDataInBoard(data)) throw new Error('[ERROR] 매칭 이력이 없습니다.');
+      OutputView.printPairs(this.#board.getPairs(data));
+    } catch (error) {
+      OutputView.printError(error);
+      return await this.pairSearching();
+    }
   }
 
   async getChoice() {

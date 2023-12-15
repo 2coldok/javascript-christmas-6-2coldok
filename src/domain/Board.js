@@ -9,6 +9,12 @@ import { boardForm } from "../utils/Formatter.js";
 5. reset() 초기화
 */
 
+const MISSION = {
+  레벨1 : ['자동차경주', '로또', '숫자야구게임'],
+  레벨2 : ['장바구니', '결제', '지하철노선도'],
+  레벨4 : ['성능개선', '배포'],
+};
+
 class Board {
   /*
     map(mission, levelPairs)
@@ -51,6 +57,31 @@ class Board {
     
     return false;
   }
+  // map : '자동차게임' -> [1레벨, 페어스배열]
+  // Array : [ ['자동차게임', [레벨1, pairs]], ['로또', [레벨1, pairs]] ]
+  searchSameLevelPairAlready(data, pairs) {
+    const [course, level, mission] = data;
+    
+    // 같은 레벨에 있는 기록들 배열 에서 중복 페어 검색
+    const sameLevelDataArray = Array.from(this.#courseBoard(course)).filter(([recordMission, [recordLevel, recordPairs]]) => {
+      return recordLevel === level;
+    });
+    const countArray = sameLevelDataArray.filter(([recordMission, [recordLevel, recordPairs]]) => this.checkDuple(pairs, recordPairs));
+    
+    if (countArray.length !== 0) return true;
+    
+    return false;
+  }
+  
+  checkDuple(pairs, recordPairs) {
+    const copy1 = pairs.slice().map((pair) => pair.sort()).map((pair) => String(pair));
+    const copy2 = recordPairs.slice().map((pair) => pair.sort()).map((pair) => String(pair));
+    const count = copy1.filter((pair) => copy2.includes(pair));
+    
+    if (count.length !== 0) return true;
+    return false;
+  }
+
   
   // 페어 조회
   // input : data ['프론트엔드', '레벨1', '자동차경주']
