@@ -22,8 +22,16 @@
 2. 사용자 입력 '프론트엔드, 레벨1, 자동차경주' 을 정제해 배열로 만드는 기능 
 2. 매칭 결과 저장하는 기능 만들기.
 
+map.set('frontend', obj)
+obj = {
+  level : 레벨1
+  mission : 자동차경주
+  pairMatching : [['a', 'b'],[] ...]
+}
 
-- class MatchRecord    
+
+- class MatchRecord
+매칭 정보가 있는지 확인하는 기능(매칭 정보 조회);    
 매칭 결과 저장 기능
 매칭 정보 탐색
 매칭 시도 횟수

@@ -16,18 +16,18 @@ class PairMatching {
   }
 
   #setCourse(course) {
-    if (course === 'backend') this.#setBackend();
-    if (course === 'frontend') this.#setFrontEnd();
+    if (course === '백엔드') this.#setBackend();
+    if (course === '프론트엔드') this.#setFrontEnd();
   }
 
   #setBackend() {
-    this.#course = 'backend';
+    this.#course = '백엔드';
     this.#crews = BACKEND_CREWS;
     this.#indexArray = BACKEND_CREWS_INDEX
   }
 
   #setFrontEnd() {
-    this.#course = 'frontend';
+    this.#course = '프론트엔드';
     this.#crews = FRONTEND_CREWS;
     this.#indexArray = FRONTEND_CREWS_INDEX;
   }
@@ -39,8 +39,8 @@ class PairMatching {
   
   //이것만 쓰면 됨.
   getPairResult() {
-    if (this.#course === 'frontend') return this.getOddPairsResult();
-    if (this.#course === 'backend') return this.getEvenPairsResult();
+    if (this.#course === '프론트엔드') return this.getOddPairsResult();
+    if (this.#course === '백엔드') return this.getEvenPairsResult();
   }
 
   getEvenPairsResult() {
@@ -63,7 +63,6 @@ class PairMatching {
 
     return result;
   }
-
 }
 
 export default PairMatching;
@@ -73,3 +72,7 @@ const a = new PairMatching('backend');
 
 console.log(a.getPairResult());
 */
+
+
+console.log(Random.shuffle([1,2,3,4,5]));
+console.log(Random.shuffle([0,1,2,3,4]));

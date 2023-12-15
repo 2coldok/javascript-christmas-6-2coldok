@@ -2,6 +2,7 @@ import { Console } from "@woowacourse/mission-utils";
 
 const OutputView = {
   printTemplete() {
+    Console.print('');
     Console.print('#############################################');
     Console.print('과정: 백엔드 | 프론트엔드');
     Console.print('미션:');
@@ -18,7 +19,6 @@ const OutputView = {
     
     Console.print('');
   },
-
 };
 
 export default OutputView;

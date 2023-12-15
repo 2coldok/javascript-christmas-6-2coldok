@@ -1,4 +1,5 @@
 import { Console  } from "@woowacourse/mission-utils";
+import BoardForm from "../domain/BoardForm.js";
 
 const InputView = {
   // 기능을 선택하세요
@@ -7,12 +8,19 @@ const InputView = {
     
     return choice;
   },
+
+  async readRematchingChoice() {
+    const choice = await Console.readLineAsync('매칭 정보가 있습니다. 다시 매칭하시겠습니까?\n네 | 아니오\n');
+    
+    return choice;
+  },
   
   // 과정, 레벨 ,미션을 선택하세요
   async readForm() {
     const form = await Console.readLineAsync('과정, 레벨, 미션을 선택하세요.\nex) 백엔드, 레벨1, 자동차경주\n');
+    const boardForm = new BoardForm(form);
 
-    return form;
+    return boardForm.getData();
   },
 };
 
